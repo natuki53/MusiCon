@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Music;
+import model.logic.ImportMusicLogic;
 
 @WebServlet("ImportMusic")
 public class ImportMusic extends HttpServlet {
@@ -39,7 +40,7 @@ public class ImportMusic extends HttpServlet {
 		Time music_time;
 
 		// 曲インポート処理の実行
-		Music music = new Music(title, genre, artist, lyricist, composer, releaseYear, like, music_time);
+		Music music = new Music(title,genre,artist,lyricist,composer,releaseYear,music_time,like);
 		ImportMusicLogic logic = new ImportMusicLogic();
 		boolean result = logic.execute(music);
 
