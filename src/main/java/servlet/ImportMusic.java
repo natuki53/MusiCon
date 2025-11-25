@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.sql.Time;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -10,6 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+
 import model.Music;
 import model.logic.ImportMusicLogic;
 
@@ -28,16 +28,18 @@ public class ImportMusic extends HttpServlet {
 		// リクエストパラメータを取得
 		request.setCharacterEncoding("UTF-8");
 		String title = request.getParameter("title");
+		String genre = request.getParameter("genre");
 		String artist = request.getParameter("artist");
-		String SreleaseYear = request.getParameter("releaseYear");
+		String lyricist = request.getParameter("lyricist");
+		String composer = request.getParameter("composer");
+		String Str_releaseYear = request.getParameter("releaseYear");
+		String Str_music_time = request.getParameter("music_time");
+		String Str_like = request.getParameter("like");
 		
 		// releaseYearをint型に変換 + 残りの宣言
-		int releaseYear = Integer.parseInt(SreleaseYear);
-		String genre;
-		String lyricist;
-		String composer;
-		int like;
-		Time music_time;
+		int releaseYear = Integer.parseInt(Str_releaseYear);
+		int music_time = Integer.parseInt(Str_music_time);
+		int like = Integer.parseInt(Str_like);
 
 		// 曲インポート処理の実行
 		Music music = new Music(title,genre,artist,lyricist,composer,releaseYear,music_time,like);
