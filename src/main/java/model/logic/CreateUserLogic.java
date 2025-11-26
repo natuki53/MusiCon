@@ -1,6 +1,6 @@
 package model.logic;
 
-import model.User;
+import dao.UserDAO;
 
 public class CreateUserLogic {
 

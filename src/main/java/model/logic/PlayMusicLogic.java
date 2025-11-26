@@ -1,6 +1,6 @@
 package model.logic;
 
-import model.Music;
+import dao.MusicDAO;
 
 public class PlayMusicLogic {
 	//曲を再生する
