@@ -1,32 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>曲の追加</title>
 <%-- cssの連携 --%>
-
+<link rel="stylesheet"
+	href="${pageContext.request.ContextPath}/css/style.css">
 </head>
 <body>
-<h1>曲の追加</h1>
-<%-- ページの見出し部分 --%>
+	<div class="container">
+		<%-- ページの見出し部分 --%>
+		<h1 class="cUser-title">曲の追加</h1>
 
-<form action="Login" method="post">
-  <%-- 曲名の入力欄 --%>
-  曲名<br>
-  <input type="text" name="title"><br>
+		<form action="Login" method="post">
+			<%-- 曲名の入力欄 --%>
+			<label>曲名</label> <input type="text" name="musicName" required>
 
-  <%-- アーティストの入力欄 --%>
-  アーティスト<br>
-  <input type="text" name="artist"><br>
-
-<%-- リリース日の入力欄 --%>
-  リリース日<br>
-  <input type="text" name="releaseYear"><br>
-
-  <%-- 追加ボタン --%>
-  <input type="submit" value="追加"><br>
-</form>
+			<%-- アーティストの入力欄 --%>
+			<label>アーティスト</label><input type="artist" name="pass"
+				required>
+				
+			<%-- リリース日の入力欄 --%>
+			<label>リリース日</label><input type="releaseYear" name="pass"
+				required>
+				
+			<%-- 追加ボタン --%>
+			<button type="submit">追加</button>
+		</form>
+	</div>
 </body>
 </html>
