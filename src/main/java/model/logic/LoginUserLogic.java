@@ -1,5 +1,7 @@
 package model.logic;
 
+import model.User;
+
 public class LoginUserLogic {
 
 	//ログイン機能

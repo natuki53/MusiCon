@@ -1,5 +1,7 @@
 package model.logic;
 
+import model.Music;
+
 public class PlayMusicLogic {
 	//曲を再生する
 	public boolean execute(Music music) {

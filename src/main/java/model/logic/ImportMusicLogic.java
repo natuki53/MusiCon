@@ -1,5 +1,7 @@
 package model.logic;
 
+import model.Music;
+
 public class ImportMusicLogic {
 	
 	//曲を追加

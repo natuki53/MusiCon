@@ -1,5 +1,7 @@
 package model.logic;
 
+import model.User;
+
 public class CreateUserLogic {
 
 	//新規ユーザー登録
