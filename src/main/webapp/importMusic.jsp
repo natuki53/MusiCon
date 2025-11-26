@@ -11,10 +11,11 @@
 </head>
 <body>
 	<div class="container">
+	<a href="top.jsp" class="top">TOP</a>
 		<%-- ページの見出し部分 --%>
 		<h1 class="cUser-title">曲の追加</h1>
 
-		<form action="top.jsp" method="post">
+		<form action="ImportMusic.java" method="post">
 			<%-- 曲名の入力欄 --%>
 			<label>曲名</label> <input type="text" name="musicName" required>
 
