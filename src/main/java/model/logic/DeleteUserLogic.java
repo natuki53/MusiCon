@@ -11,7 +11,7 @@ public class DeleteUserLogic {
 		UserDAO dao = new UserDAO();
 		
 		//DAOメソッド呼び出し・削除実行
-		if(dao./*メソッド名*/(user)) { 
+		if(dao.deleteUser(user)) { 
 			// 削除成功
 			return true;
 		}		
