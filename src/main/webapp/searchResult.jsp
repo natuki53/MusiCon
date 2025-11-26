@@ -12,16 +12,14 @@
 </head>
 <body>
 	<%-- ページタイトル --%>
-	<div class="header">searchResult</div>
-	<div class="main">
+	<div class="top-area">
 		<a href="top.jsp" class="top">TOP</a>
 	</div>
-	<div class="context">
 
 		<%-- ページの見出し部分 --%>
 		<div class="result-title">"無記入"の検索結果</div>
 
-		<%-- ランキング一覧 --%>
+		<%-- 検索結果一覧 --%>
 		<ul class="result-list">
 			<c:choose>
 				<c:when test="${not empty 無記入}">
@@ -31,13 +29,13 @@
 					</c:forEach>
 				</c:when>
 				<c:otherwise>
-					<li class="rank-item">なんか曲1-なんかアーティスト</li>
-					<li class="rank-item">なんか曲2-なんかアーティスト</li>
-					<li class="rank-item">なんか曲3-なんかアーティスト</li>
-					<li class="rank-item">なんか曲4-なんかアーティスト</li>
-					<li class="rank-item">なんか曲5-なんかアーティスト</li>
-					<li class="rank-item">なんか曲6-なんかアーティスト</li>
-					<li class="rank-item">なんか曲7-なんかアーティスト</li>
+					<li class="result-item">無記入</li>
+					<li class="result-item">無記入</li>
+					<li class="result-item">無記入</li>
+					<li class="result-item">無記入</li>
+					<li class="result-item">無記入</li>
+					<li class="result-item">無記入</li>
+					<li class="result-item">無記入</li>
 				</c:otherwise>
 			</c:choose>
 		</ul>

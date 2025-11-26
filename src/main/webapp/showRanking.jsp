@@ -31,13 +31,13 @@
 					</c:forEach>
 				</c:when>
 				<c:otherwise>
-					<li class="rank-item">なんか曲1-なんかアーティスト</li>
-					<li class="rank-item">なんか曲2-なんかアーティスト</li>
-					<li class="rank-item">なんか曲3-なんかアーティスト</li>
-					<li class="rank-item">なんか曲4-なんかアーティスト</li>
-					<li class="rank-item">なんか曲5-なんかアーティスト</li>
-					<li class="rank-item">なんか曲6-なんかアーティスト</li>
-					<li class="rank-item">なんか曲7-なんかアーティスト</li>
+					<li class="rank-item">無記入</li>
+					<li class="rank-item">無記入</li>
+					<li class="rank-item">無記入</li>
+					<li class="rank-item">無記入</li>
+					<li class="rank-item">無記入</li>
+					<li class="rank-item">無記入</li>
+					<li class="rank-item">無記入</li>
 				</c:otherwise>
 			</c:choose>
 		</ul>

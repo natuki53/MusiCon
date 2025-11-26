@@ -12,7 +12,7 @@
 <body>
 	<a href="top.jsp" class="top">TOP</a>
 	<p>
-		"<%= /*無記入*/ %>
+		"<%= user_name %>
 		"さんを<br> 削除しました
 	</p>
 </body>
