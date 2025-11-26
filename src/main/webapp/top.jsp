@@ -32,8 +32,25 @@
   </div>
 
 	<%-- 曲リスト --%>
-	
-	無記入
+	<ul class="music-list">
+			<c:choose>
+				<c:when test="${not empty 無記入}">
+					<c:forEach var="s" items="${無記入}" varStatus="st">
+						<li class="music-item"><c:out value="${s.title}" />-<c:out
+								value="${s.artist}" /></li>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<li class="music-item">なんか曲1-なんかアーティスト</li>
+					<li class="music-item">なんか曲2-なんかアーティスト</li>
+					<li class="music-item">なんか曲3-なんかアーティスト</li>
+					<li class="music-item">なんか曲4-なんかアーティスト</li>
+					<li class="music-item">なんか曲5-なんかアーティスト</li>
+					<li class="music-item">なんか曲6-なんかアーティスト</li>
+					<li class="music-item">なんか曲7-なんかアーティスト</li>
+				</c:otherwise>
+			</c:choose>
+		</ul>
 	
 	
 	

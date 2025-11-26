@@ -10,20 +10,21 @@
 	href="${pageContext.request.ContextPath}/css/style.css">
 </head>
 <body>
-	<h1>ログイン</h1>
-	<%-- ページの見出し部分 --%>
+	<div class="container">
+		<%-- ページの見出し部分 --%>
+		<h1 class="cUser-title">ログイン</h1>
 
-	<form action="Login" method="post">
-		<%-- ユーザー名の入力欄 --%>
-		ユーザー名<br> <input type="text" name="name"><br>
+		<form action="Login" method="post">
+			<%-- ユーザー名の入力欄 --%>
+			<label>ユーザー名</label> <input type="text" name="name" required>
 
-		<%-- パスワードの入力欄 --%>
-		パスワード<br> <input type="password" name="pass"><br>
+			<%-- パスワードの入力欄 --%>
+			<label>パスワード</label><input type="password" name="pass"
+				required>
 
-		<%-- ログインボタン --%>
-		<input type="submit" value="ログイン"><br>
-
-		<%-- 新規登録ページへのリンク --%>
-		<a href="UserInsert.jsp">新規登録はこちら</a>
+			<%-- ログインボタン --%>
+			<button type="submit">ログイン</button>
+		</form>
+	</div>
 </body>
 </html>
