@@ -11,7 +11,7 @@ public class CreateUserLogic {
 		UserDAO dao = new UserDAO();
 	
 		//DAOメソッド呼び出し・登録実行	
-		if(dao./*メソッド名*/(user)) {
+		if(dao.registerUser(user)) {
 			//登録成功
 			return true;
 		}
