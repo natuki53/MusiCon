@@ -11,7 +11,7 @@ import java.util.List;
 import model.Music;
 
 public class MusicDAO {
-	
+
 	private final String JDBC_URL = "jdbc:mysql://localhost/musicon";
 	private final String DB_USER = "root";
 	private final String DB_PASS = "";
@@ -54,8 +54,7 @@ public class MusicDAO {
 		}
 		return musicList; // 全てのMutterリストを返す
 	}
-	
-	
+
 	public List<Music> getRanking() {
 		List<Music> musicList = new ArrayList<>();
 		// JDBCドライバを読み込む
@@ -91,13 +90,49 @@ public class MusicDAO {
 		}
 		return musicList; // 全てのMutterリストを返す
 	}
-	
-	
-	public boolean registerMusic(Music music) {
-		
+
+	public boolean importMusic(Music music) {
+		// JDBCドライバを読み込む
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			throw new IllegalStateException("JDBCドライバを読み込めませんでした");
+		}
+
+		// データベース接続
+		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
+
+			
+			// INSERT文の準備（新規ユーザーをデータベースに登録）
+			String sql = "INSERT INTO USERS(TITLE, GENRE, ARTIST, LYRICIST,"
+					+ "COMPOSER, RELEASE_YMD, MUSIC_TIME, URL) VALUES ("
+					+ "?, ?, ?, ?, ?, ?, ?, ?)";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			pStmt.setString(1, music.getTitle());
+			pStmt.setString(2, music.getGenre());
+			pStmt.setString(3, music.getArtist());
+			pStmt.setString(4, music.getLyricist());
+			pStmt.setString(5, music.getComposer());
+			pStmt.setInt(6, music.getReleaseYear());
+			pStmt.setInt(7, music.getMusicTime());
+			pStmt.setString(8, music.getUrl());		//URLのゲッターとセッターを作ってもらう
+			
+
+			// INSERT文を実行
+			int result = pStmt.executeUpdate();
+
+			// 登録成功か確認
+			return result > 0;
+
+		} catch (SQLException e) {
+			e.printStackTrace(); // SQLエラーを表示
+			System.out.println("Error : UserDAO.registerUser");
+			return false; // 失敗
+		}
 	}
-	
+
 	public boolean likeMusic(Music music) {
-		
+
 	}
 }
