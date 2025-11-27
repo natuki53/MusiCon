@@ -12,8 +12,7 @@
 <body>
 	<a href="top.jsp" class="top">TOP</a>
 	<p>
-		"<%= user_name %>
-		"さんを<br> 削除しました
+		"user_name"さんを<br> 削除しました
 	</p>
 </body>
 </html>
