@@ -12,7 +12,12 @@
 <body>
 	<a href="top.jsp" class="top">TOP</a>
 	<p>
+<<<<<<< HEAD
 		<%=(String)session.getAttribute("user_name")%>さんはじめまして
+=======
+		"<%= user_name %>"さんを<br> 
+		削除しました
+>>>>>>> branch 'master' of https://github.com/marron46/MusiCon.git
 	</p>
 </body>
 </html>

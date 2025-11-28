@@ -8,7 +8,11 @@
 <meta charset="UTF-8">
 <title>ユーザー登録結果</title>
 <%-- cssの連携 --%>
+<<<<<<< HEAD
 <link rel="stylesheet" href="/css/createResult.css">
+=======
+<link rel="stylesheet" href="css/createResult.css">
+>>>>>>> branch 'master' of https://github.com/marron46/MusiCon.git
 </head>
 <body>
 	<div class="container">
