@@ -5,12 +5,12 @@ body{
 	background-color: #A997C6;  /*背景カラーをグレーに*/
 	font-family: sans-serif;
 }
-container{
+.container{
 	width: 400px;
 	margin: 120px auto;
 	text-align: center;
 }
-cr-btn{
+.log-btn{
 	width: 120px;
 	height: 40px;
 	font-size: 18px;
