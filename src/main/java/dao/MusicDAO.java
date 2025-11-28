@@ -52,7 +52,7 @@ public class MusicDAO {
 			e.printStackTrace(); // SQLエラーを表示
 			return null;
 		}
-		return musicList; // 全てのMutterリストを返す
+		return musicList; // 全てのmusicListリストを返す
 	}
 
 	public List<Music> getRanking() {
