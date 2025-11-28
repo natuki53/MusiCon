@@ -3,9 +3,9 @@ package model;
 
 
 public class Bookmark {
-	private int bookmark_id;
-	private String title ;//ブックマークへ登録したユーザの番号
-	private String artist;//ブックマークへ登録した曲の番号
+	private int bookmark_id;//	ブックマークID
+	private String title ;//タイトル（外部キー）
+	private String artist;//アーティスト名（外部キー）
 	
     // コンストラクタ : フィールド設定
 	public Bookmark(int bookmark_id,String title,String artist){
