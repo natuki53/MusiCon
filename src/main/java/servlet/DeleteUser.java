@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+
 import model.User;
 import model.logic.DeleteUserLogic;
 
@@ -39,13 +40,13 @@ public class DeleteUser extends HttpServlet {
 		// ハッシュ化
 		String user_pass = hashSHA256(Hr_user_pass);
 
-		// ログイン処理の実行
+		// ユーザー削除処理の実行
 		User user = new User(user_name, user_pass);
 		DeleteUserLogic logic = new DeleteUserLogic();
 		boolean result = logic.execute(user);
 
-		// ログイン処理の成否によって処理を分岐
-		if (result) { // ログイン成功時
+		// ユーザー削除処理の成否によって処理を分岐
+		if (result) { // ユーザー削除成功時
 			// セッションスコープにユーザーIDを保存
 			HttpSession session = request.getSession();
 			session.setAttribute("user_name", user_name);
@@ -53,7 +54,7 @@ public class DeleteUser extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("deleteResult.jsp");
 			dispatcher.forward(request, response);
 			System.out.println("でけた！");
-		} else { // ログイン失敗時
+		} else { // ユーザー削除失敗時
 			// リダイレクト
 			response.sendRedirect("DeleteUser");
 			System.out.println("できない");
