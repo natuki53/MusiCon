@@ -17,7 +17,7 @@ public class Music {//Music情報格納
 	public Music() {}
 
 	public Music(String title, String genre, String artist, String lyricist, String composer, int releaseYMD,
-			int music_time, String url) {
+			int music_time) {
 		this.title = title;
 		this.genre = genre;
 		this.artist = artist;
@@ -25,7 +25,6 @@ public class Music {//Music情報格納
 		this.composer = composer;
 		this.releaseYMD = releaseYMD;
 		this.music_time = music_time;
-		this.url = url;
 
 	}
 

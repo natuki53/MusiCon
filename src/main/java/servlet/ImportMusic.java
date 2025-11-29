@@ -1,5 +1,6 @@
 package servlet;
 
+import java.io.File;
 import java.io.IOException;
 
 import jakarta.servlet.RequestDispatcher;
@@ -9,6 +10,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.Part;
+
 import model.Music;
 import model.logic.ImportMusicLogic;
 
@@ -35,18 +38,38 @@ public class ImportMusic extends HttpServlet {
 		String Str_releaseYMD = request.getParameter("releaseYMD");
 		String Str_music_time = request.getParameter("music_time");
 		String Str_like = request.getParameter("like");
-		String url = request.getParameter("url");
+		Part url = request.getPart("url"); // アップロードされたファイル
 		
-		// releaseYearをint型に変換 + 残りの宣言
+		// int型に変換
 		int releaseYMD = Integer.parseInt(Str_releaseYMD);
 		int music_time = Integer.parseInt(Str_music_time);
+		int like = Integer.parseInt(Str_like);
+		
+		// 保存フォルダ（webapps/プロジェクト/music/）
+        String uploadPath = request.getServletContext().getRealPath("music"); // 「音楽ファイルを保存するフォルダの実際のディスク上の場所」を取得
+        File uploadDir = new File(uploadPath); // 「保存先フォルダ」を表す File オブジェクトを作る（作るとは言ってないただ”場所”を示すだけ）
+        if (!uploadDir.exists()) uploadDir.mkdir(); // 「music フォルダが無ければ作る」
+
 
 		// 曲インポート処理の実行
-		Music music = new Music(title,genre,artist,composer,lyricist,releaseYMD,music_time,url);
+		Music music = new Music(title,genre,artist,composer,lyricist,releaseYMD,music_time);
 		ImportMusicLogic logic = new ImportMusicLogic();
 		boolean result = logic.execute(music);
 		System.out.println(music);
+		
+		// ファイル名取得
+		String fileName = url.getSubmittedFileName();
+		String savePath = uploadPath + File.separator + fileName;
 
+		// 実際にファイル保存
+		url.write(savePath);
+
+		// DBに登録するファイルパス（JSP側の <audio> で使うパス）
+		String dbFilePath = "music/" + fileName;
+		
+		// DAO → DB登録
+        logic.addMusic(title, genre, artist, lyricist, composer, releaseYMD, music_time, like, dbFilePath);
+		
 		// 曲インポート処理の成否によって処理を分岐
 		if (result) { // 曲インポート成功時
 			// セッションスコープに曲タイトルを保存
