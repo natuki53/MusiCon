@@ -42,7 +42,7 @@
 		<form action="Seach" method="post">
 			<%-- 検索バー --%>
 			<div class="search-area">
-				<img src="searchMark.png" class="search" width="70"> <input type="text"
+				<img src="png/searchMark.png" class="search" width="70"> <input type="text"
 					class="searchbox" placeholder="検索">
 			</div>
 		</form>
