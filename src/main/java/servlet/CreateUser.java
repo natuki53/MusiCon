@@ -41,13 +41,13 @@ public class CreateUser extends HttpServlet {
 		// ハッシュ化
 		String user_pass = hashSHA256(Hr_user_pass);
 
-		// ログイン処理の実行
+		// 新規ユーザー登録処理の実行
 		User user = new User(user_name, user_pass);
 		CreateUserLogic logic = new CreateUserLogic();
 		boolean result = logic.execute(user);
 
-		// ログイン処理の成否によって処理を分岐
-		if (result) { // ログイン成功時
+		// 新規ユーザー登録処理の成否によって処理を分岐
+		if (result) { // 新規ユーザー登録成功時
 			// セッションスコープにユーザーIDを保存
 			HttpSession session = request.getSession();
 			session.setAttribute("user_name", user_name);
@@ -56,7 +56,7 @@ public class CreateUser extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("createResult.jsp");
 			dispatcher.forward(request, response);
 			System.out.println("でけた！");
-		} else { // ログイン失敗時
+		} else { // 新規ユーザー登録失敗時
 			// リダイレクト
 			response.sendRedirect("CreateUser");
 			System.out.println("ろぐいんできない");
