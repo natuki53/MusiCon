@@ -156,7 +156,7 @@ public class MusicDAO {
 			return false; // 失敗
 		}
 	}*/
-	public void insert(String title,String genre,String artist,String lyricist,String composer,int releaseYMD,int music_time,int like,String dbFilePath) {// 書き足し
+	public void insert(String title,String genre,String artist,String lyricist,String composer,int release_ymd,int music_time,int likes,String url) {// 書き足し
 		// JDBCドライバを読み込む
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -165,17 +165,17 @@ public class MusicDAO {
 		}
 		// データベース接続
 		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
-			String sql = "INSERT INTO music(title, genre, artist, lyricist, composer, releaseYMD, music_time, like, dbFilePath) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO musics(title, genre, artist, lyricist, composer, release_ymd, music_time, likes, url) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, title);
 			pStmt.setString(2, genre);
 			pStmt.setString(3, artist);
 			pStmt.setString(4, lyricist);
 			pStmt.setString(5, composer);
-			pStmt.setInt(6, releaseYMD);
+			pStmt.setInt(6, release_ymd);
 			pStmt.setInt(7, music_time);
-			pStmt.setInt(8, like);
-			pStmt.setString(9, dbFilePath);
+			pStmt.setInt(8, likes);
+			pStmt.setString(9, url);
 
 			pStmt.executeUpdate();
 		} catch (Exception e) {
