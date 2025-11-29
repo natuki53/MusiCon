@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>曲の追加</title>
 <%-- cssの連携 --%>
-<link rel="stylesheet" href="webapp/css/style.css">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 	<h1>音楽アップロード</h1>
@@ -17,6 +17,30 @@
 
 		<!-- タイトル入力欄（DBのtitleに入る） -->
 		タイトル：<br> <input type="text" name="title" required><br>
+		<br>
+		
+		<!-- ジャンル入力欄（DBのgenreに入る） -->
+		ジャンル：<br> <input type="text" name="genre" required><br>
+		<br>
+		
+		<!-- アーティスト入力欄（DBのartistに入る） -->
+		アーティスト名：<br> <input type="text" name="artist" required><br>
+		<br>
+		
+		<!-- 作詞家入力欄（DBのlyricistに入る） -->
+		作詞家：<br> <input type="text" name="lyricist" required><br>
+		<br>
+		
+		<!-- 作曲家入力欄（DBのcomposerに入る） -->
+		作曲家：<br> <input type="text" name="composer" required><br>
+		<br>
+		
+		<!-- 発売年月日入力欄（DBのrelease_ymdに入る） -->
+		発売年月日：<br> <input type="text" name="releaseYMD" required><br>
+		<br>
+		
+		<!-- 再生時間入力欄（DBのmusic_timeに入る） -->
+		再生時間：<br> <input type="text" name="music_time" required><br>
 		<br>
 
 		<!-- 音楽ファイル選択欄（mp3などの音声ファイル） -->

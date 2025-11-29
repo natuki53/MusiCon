@@ -20,8 +20,8 @@ public class ImportMusicLogic {
 	}*/
 
 	//
-	public void addMusic(String title,String genre,String artist,String lyricist,String composer,int releaseYMD,int music_time,int like,String dbFilePath) {
-		dao.insert(title, genre, artist, lyricist, composer, releaseYMD, music_time, like, dbFilePath);
+	public void addMusic(String title,String genre,String artist,String lyricist,String composer,int releaseYMD,int music_time,String url) {
+		dao.insert(title, genre, artist, lyricist, composer, releaseYMD, music_time, url);
 	}
 }
 
