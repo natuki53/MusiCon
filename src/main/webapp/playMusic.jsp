@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="model.Music" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +30,7 @@
 
 	<form action="LikeMusic" method="post">
 	<input type="hidden" name="id" value="<%= music.getId() %>"><!-- name="id" → サーブレットで request.getParameter("id") として受け取れる value="music.getId()" → 現在再生中の曲の ID が代入される  -->
-	<button type="submit">いいね！ (<%= m.getLikes() %>)</button><!-- m.getLikes()→現在いいね数が表示される -->
+	<button type="submit">いいね！ (<%= music.getLikes() %>)</button><!-- music.getLikes()→現在いいね数が表示される -->
 	</form>
 
 	
