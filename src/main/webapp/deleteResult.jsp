@@ -7,12 +7,19 @@
 <meta charset="UTF-8">
 <title>ユーザー削除</title>
 <%-- cssの連携 --%>
-<link rel="stylesheet" href="webapp/css/style.css">
+<link rel="stylesheet" href="css/deleteResult.css">
 </head>
 <body>
-	<a href="top.jsp" class="top">TOP</a>
-	<p>
-		<%=(String) session.getAttribute("user_name")%>さんグッバイ!!<br>
-	</p>
+	<div class="reverse">
+		<a href="top.jsp">TOP</a>
+	</div>
+	<div class="container">
+		<div class="message">
+			<h1>ユーザーが<br>削除されました</h1>
+			<h2>
+				<%=(String) session.getAttribute("user_name")%>さん<br>グッバイ!!
+			</h2>
+		</div>
+	</div>
 </body>
 </html>
