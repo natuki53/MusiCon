@@ -88,6 +88,8 @@ public class BookmarkDAO {
 		// データベース接続
 		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
 
+			//TODO UserとMusicがすでにテーブル内にある場合は弾く機能を作る
+			
 			// Usersテーブルで該当のユーザIDを取得
 			String sql_get_userid = "SELECT USER_ID FROM USERS WHERE USER_NAME=?";
 			PreparedStatement pStmt1 = conn.prepareStatement(sql_get_userid);

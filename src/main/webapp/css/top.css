@@ -211,7 +211,13 @@ body {
 	align-items: center; /* 横方向中央 */
    	text-align: center;  /* 中の文字を中央揃え */
 }
-   
+
+.container ul {
+    list-style: none;
+    padding-left: 0;   /* 左の余白を消す */
+    margin: 0;         /* マージンも調整 */
+}  
+
 .music-area {
 	font-family: Arial, sans-serif; /* フォント設定 */
 	font-size: 40px;
@@ -221,3 +227,5 @@ body {
 	width: 800px;  /* ボックス幅 */
 	height: 70px;
 }
+
+
