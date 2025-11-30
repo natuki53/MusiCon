@@ -31,7 +31,7 @@ input[type="password"] {
     width: 100%; /* 幅いっぱい */
     height: 45px; /* 高さ */
     font-size: 18px; /* 文字サイズ */
-    margin: 10px 0 25px; /* 上・左右・下の余白 */
+    margin: 10px -10px 25px; /* 上・左右・下の余白 */
     padding: 5px 10px; /* 内側余白 */
     border: 2px solid #333; /* 黒い枠線 */
     border-radius: 4px; /* 角丸 */
