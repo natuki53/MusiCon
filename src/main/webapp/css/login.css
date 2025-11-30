@@ -50,7 +50,7 @@ input[type="password"] {
 	width: 60%;  /* ボタン幅 */
 	padding: 15px 0;  /* ボタンの高さ */
 	margin-top: 20px;  /* 上の余白 */
-	background-color: #A997C6;  /* ボタン背景色 */
+	background-color: #8848A8;  /* ボタン背景色 */
 	color: white;  /* ボタンの文字色 */
 	text-decoration: none;  /* リンク時の下線を消す */
 	border: none;  /* 枠線なし */
@@ -63,5 +63,5 @@ input[type="password"] {
 
 /* ボタンのホバー時（マウスを乗せた時） */
 .login-btn:hover{
-	background-color: #8848A8;  /* 少し濃い紫に変更 */
+	background-color:#A997C6;  /* 少し薄い紫に変更 */
 }

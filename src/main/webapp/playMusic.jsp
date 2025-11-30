@@ -6,10 +6,11 @@
 <meta charset="UTF-8">
 <title>曲の再生</title>
 <%-- cssの連携 --%>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/playMusic.css">
 </head>
 <body>
-
+	<!-- topページに戻るリンク -->
+	<a href="PlayMusic">← topに戻る</a>
 	<!--
     Servlet（PlayMusic）の中で、request.setAttribute("music", music);として送られてきた 1 曲分のデータを受け取っている。 -->
 	<%
@@ -28,8 +29,7 @@
 	<br>
 	<br>
 
-	<!-- topページに戻るリンク -->
-	<a href="PlayMusic">← topに戻る</a>
+
 
 </body>
 </html>

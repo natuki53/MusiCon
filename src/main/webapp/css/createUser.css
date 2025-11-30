@@ -50,7 +50,7 @@ label {
     width: 200px; /* ボタン幅 */
     padding: 15px 0; /* ボタンの高さ */
     margin-top: 30px; /* 上の余白 */
-    background-color: #A997C6; /* ボタン背景色 */
+    background-color: #8848A8; /* ボタン背景色 */
     color: white; /* 文字色 */
     border: none; /* 枠線なし */
     border-radius: 5px; /* 角丸 */
@@ -58,7 +58,7 @@ label {
     cursor: pointer; /* カーソルを指マークに */
 }
 .submit-btn:hover {
-    background-color: #8848A8; /* ホバー時の濃い紫 */
+    background-color: #A997C6; /* ホバー時の薄い紫 */
 }
 
 /* TOP へ戻るボタン */
