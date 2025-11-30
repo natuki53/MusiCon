@@ -12,11 +12,10 @@
 </head>
 <body>
 	<div class="container">
-		<!-- ページのメインタイトル -->
 		<div class="message">
 			<div class="greeting">
 				<h1>登録に成功しました</h1>
-
+				
 				<h2><%= (String) session.getAttribute("user_name") %>さん<br>
 					はじめまして
 				</h2>

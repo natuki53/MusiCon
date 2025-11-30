@@ -24,32 +24,27 @@ body{
 /* メッセージ部分の余白 */
 .message{
 	margin-bottom: 30px;
-	}
-
-/* あいさつ文のスタイル */
-.greeting{
 	font-size: 1.5em;  /* 文字サイズ */
-	color: #555555;  /* 文字色 */
-	line-height: 1.5;  /* 行間 */
-	font-weight: normal;  /* 標準の太さ */
+		color: #555555;  /* 文字色 */
+		line-height: 1.5;  /* 行間 */
+		font-weight: normal;  /* 標準の太さ */
 	}
 
-/* ボタンの基本スタイル */
-.log-btn{
-	display: block;
-	margin: 0 auto; /* 中央寄せ */
-	width: 200px; /* ボタン幅 */
-	padding: 15px 0; /* ボタンの高さ */
-	margin-top: 30px; /* 上の余白 */
-	background-color: #8848A8; /* ボタン背景色 */
-	color: white; /* 文字色 */
-	border: none; /* 枠線なし */
-	border-radius: 5px; /* 角丸 */
-	font-size: 20px; /* 文字サイズ */
-	cursor: pointer; /* カーソルを指マークに */
+	/* TOP へ戻るボタン */
+	.reverse {
+	    position: fixed; /* 画面に固定 */
+	    top: 10px; /* 上から10px */
+	    left: 10px; /* 左から10px */
+	    background: white; /* 背景白 */
+	    padding: 12px 28px; /* 内側余白 */
+	    border-radius: 4px; /* 角丸 */
+	    box-shadow: 0 0 5px rgba(0,0,0,0.1); /* ほんのり影 */
+	    font-weight: bold; /* 太字 */
 	}
 
-/* マウスホバー時の色変化 */
-.log-btn:hover{
-	background-color: #A997C6;
+	/* 「TOPへ戻る」リンク */
+	.reverse a {
+	    color: black; /* 文字色 */
+	    text-decoration: none; /* 下線なし */
+	    font-size: 24px; /* 文字サイズ */
 	}
