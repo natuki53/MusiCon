@@ -43,9 +43,12 @@
 		<form action="Search" method="post">
 			<%-- 検索バー --%>
 			<div class="search-area">
-				<img src="png/searchMark.png" class="search" width="70" alt="検索アイコン">
 				<input type="text" class="searchbox" name="searchText"
 					placeholder="検索">
+				<button type="submit" class="search-button">
+					<img src="png/searchMark.png" class="search" width="60"
+						alt="検索アイコン">
+				</button>
 			</div>
 		</form>
 		<div class="container">
@@ -60,8 +63,7 @@
 				<!-- 曲タイトルをリンクとして表示 -->
 				<!-- クリックすると MusicServlet?id=○○ に飛び、play.jsp で再生画面へ -->
 
-				<li><a href="PlayMusic?id=<%=m.getId()%>" class="music-area">
-						<%=m.getTitle()%></a></li>
+				<a href="PlayMusic?id=<%=m.getId()%>" class="music-area"> <%=m.getTitle()%></a>
 
 				<%
 				} // for の終わり

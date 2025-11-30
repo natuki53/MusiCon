@@ -175,6 +175,13 @@ body {
 	padding: 0 20px;
 }
 
+.search-button{
+	background: none;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+}
+
 /* 検索ボックス */
 .searchbox {
 	width: 60%;
@@ -194,7 +201,7 @@ body {
    =============================== */
    
    /* 曲フォーム全体のボックス */
-.container{
+.container {
 	position: fixed;
 	bottom: 0;
 	left: 50%;
@@ -212,12 +219,6 @@ body {
    	text-align: center;  /* 中の文字を中央揃え */
 }
 
-.container ul {
-    list-style: none;
-    padding-left: 0;   /* 左の余白を消す */
-    margin: 0;         /* マージンも調整 */
-}  
-
 .music-area {
 	font-family: Arial, sans-serif; /* フォント設定 */
 	font-size: 40px;
@@ -227,5 +228,3 @@ body {
 	width: 800px;  /* ボックス幅 */
 	height: 70px;
 }
-
-
