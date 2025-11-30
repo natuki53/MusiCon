@@ -183,7 +183,7 @@ public class MusicDAO {
 		}
 	}
 
-	public boolean likeMusic(Music music) {
+	public boolean likeMusic(int id) {
 		// JDBCドライバを読み込む
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -197,6 +197,8 @@ public class MusicDAO {
 			String sql = "UPDATE SET LIKES = LIKES+1 WHERE MUSIC_ID=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
+			pStmt.setInt(1, id);
+			
 			// INSERT文を実行
 			int result = pStmt.executeUpdate();
 
