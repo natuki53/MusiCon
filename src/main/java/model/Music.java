@@ -33,6 +33,14 @@ public class Music {//Music情報格納
 		this.searchText = searchText;
 	}
 
+	public Music(int id, String title, String artist, int likes, String url) {
+		this.id = id;
+		this.title = title;
+		this.artist = artist;
+		this.likes = likes;
+		this.url = url;
+	}
+	
 	public Music(String title, String artist, int likes) {
 		this.title = title;
 		this.artist = artist;
