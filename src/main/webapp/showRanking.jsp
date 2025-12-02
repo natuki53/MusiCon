@@ -7,19 +7,23 @@
 <title>ランキング</title>
 
 <%-- cssの連携 --%>
+<<<<<<< HEAD
 <link rel="stylesheet" href="webapp/css/style.css">
 </head>
+=======
+<link rel="stylesheet" href="css/showRanking.css">
+>>>>>>> branch 'master' of https://github.com/marron46/MusiCon.git
 <body>
-	<%-- ページタイトル --%>
-	<div class="header">showRanking</div>
-	<div class="main">
+	<div class="reverse">
 		<a href="top.jsp" class="top">TOP</a>
 	</div>
-	<div class="context">
+	<%-- ページタイトル --%>
+	<div class="rank-title">人気曲ランキング</div>
+	</div>
+	<div class="container">
 
-		<%-- ページの見出し部分 --%>
-		<div class="ranking-title">人気曲ランキング</div>
 
+<<<<<<< HEAD
 		<%-- ランキング一覧 --%>
 
 		<%
@@ -66,6 +70,9 @@
 				</c:otherwise>
 			</c:choose>
 		</ul>--%>
+=======
+		<div class="main"></div>
+>>>>>>> branch 'master' of https://github.com/marron46/MusiCon.git
 	</div>
 	</div>
 </body>

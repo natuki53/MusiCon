@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+/* ページ全体の基本設定 */
+body {
+    background-color: #A997C6; /* 背景色：薄紫 */
+    min-height: 100vh; /* 画面全体の高さを確保 */
+    margin: 0; /* 余白なし */
+    font-family: Arial, sans-serif; /* 全体フォント */
+    display: flex; /* 中央配置のためflex使用 */
+    justify-content: center; /* 水平方向中央寄せ */
+    align-items: center; /* 垂直方向中央寄せ */
+}
+
+/* 中央の白いフォーム枠*/ 
+.container {
+    background-color: #ffffff; /* 白背景 */
+    width: 400px; /* 横幅 */
+    /*padding: 40px; /* 内側余白 上・左右・下 */
+    /*box-shadow: 0 4 12px rgba(0,0,0,0.15); /* ふわっとした影 */
+    /*text-align: center; /* 文字中央寄せ */
+	min-height: 550px;
+}
+	
+/* 見出し（新規登録） */
+.rank-title {
+    font-size: 48px; /* 大きめのタイトル文字 */
+    margin-top: 30px; /* 上の余白 */
+}
+
+/* TOP へ戻るボタン */
+.reverse {
+    position: fixed; /* 画面固定位置 */
+    top: 10px; /* 上から10px */
+    left: 10px; /* 左から10px */
+    background: white; /* 白背景 */
+    padding: 12px 28px; /* 内側余白 */
+    border-radius: 4px; /* 角丸 */
+    box-shadow: 0 0 5px rgba(0,0,0,0.1); /* ほんのり影 */
+    font-weight: bold; /* 太字 */
+}
+
+/* 「TOPへ戻る」リンク */
+.reverse a {
+    color: black; /* 文字色 */
+    text-decoration: none; /* 下線なし */
+    font-size: 24px; /* 文字サイズ */
+}

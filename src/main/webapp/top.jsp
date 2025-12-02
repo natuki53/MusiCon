@@ -24,8 +24,8 @@
 	<%-- メニュー --%>
 	<nav class="side-menu">
 		<ul>
-			<li><a href="myBookmark.jsp" class="menu">マイページ</a></li>
-			<li><a href="showRanking.jsp" class="menu">ランキング</a></li>
+			<li><a href="myBookmark.jsp" class="menu">ブックマーク</a></li>
+			<li><a href="ShowRanking" class="menu">ランキング</a></li>
 			<li><a href="importMusic.jsp" class="menu">曲追加</a></li>
 			<li><a href="login.jsp" class="menu">ログイン</a></li>
 			<li><a>ログアウト</a></li>
