@@ -206,13 +206,14 @@ body {
 	bottom: 0;  /* ボックスを画面の下に固定 */
 	transform: translateX(-50%);  /* 中央揃え */
 	background-color: #000000;  /* 背景を白に */
-	padding: 20px;  /* 内側余白 */
+	padding: 10px 40px;  /* 内側余白 */
 	box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* 柔らかい影 */
 	width: 60%;
+	height: 80%;
 	max-width: 900px;  /*最大の幅 */
 	min-width: 250px;  /*最小の幅 */
-	max-height: 500px;  /* 最大高さを設定 */
-	min-height: 100px;  /* 最小高さを設定 */
+	max-height: 900px;  /* 最大高さを設定 */
+	min-height: 50px;  /* 最小高さを設定 */
 	overflow-y: auto;  /* 内容が溢れる場合、スクロール可能 */
 	display: flex;
 	flex-direction: column;
