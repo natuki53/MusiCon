@@ -7,8 +7,7 @@
 <title>ランキング</title>
 
 <%-- cssの連携 --%>
-<link rel="stylesheet"
-	href="webapp/css/style.css">
+<link rel="stylesheet" href="webapp/css/style.css">
 </head>
 <body>
 	<%-- ページタイトル --%>
@@ -22,7 +21,33 @@
 		<div class="ranking-title">人気曲ランキング</div>
 
 		<%-- ランキング一覧 --%>
-		<ul class="rank-list">
+
+		<%
+		List<Music> list = (List<Music>) session.getAttribute("ranking");
+
+		if (list == null || list.isEmpty()) {
+		%>
+		<p>検索結果がありません。</p>
+		<%
+		} else {
+		%>
+		<ul>
+			<%
+			for (model.Music m : list) {
+			%>
+			<li>タイトル：<a href="PlayMusic?id=<%=m.getId()%>"> <%=m.getTitle()%></a><br>
+				アーティスト：<%=m.getArtist()%><br> いいね：<%=m.getLikes()%>
+			</li>
+			<hr>
+			<%
+			}
+			%>
+		</ul>
+		<%
+		}
+		%>
+
+		<%--<ul class="rank-list">
 			<c:choose>
 				<c:when test="${not empty 無記入}">
 					<c:forEach var="s" items="${無記入}" varStatus="st">
@@ -40,7 +65,7 @@
 					<li class="rank-item">無記入</li>
 				</c:otherwise>
 			</c:choose>
-		</ul>
+		</ul>--%>
 	</div>
 	</div>
 </body>
