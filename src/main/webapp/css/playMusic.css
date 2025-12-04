@@ -7,11 +7,11 @@ body {
   padding: 30px; /* 全体に30pxのパディングを追加 */
 }
 
-/* 戻るボタンのスタイル */
+/* topに戻るボタンのスタイル */
 .back-btn {
   color: white; /* 文字色は白 */
   text-decoration: none; /* 下線を消す */
-  font-size: 14px; /* フォントサイズは14px */
+  font-size: 24px; /* フォントサイズは */
 }
 
 /* プレイヤーのコンテナ */
@@ -22,7 +22,7 @@ body {
   align-items: center; /* 垂直方向に中央揃え */
 }
 
-/* アルバムアートのスタイル */
+/* アルバムアート(ジャケ写)のスタイル */
 .album-art {
   width: 180px; /* 横幅180px */
   height: 180px; /* 高さ180px */
@@ -31,7 +31,7 @@ body {
   border: 1px solid #ddd; /* 薄い灰色の枠線（必要なら） */
 }
 
-/* 曲情報の見出し */
+/* タイトル　スタイル */
 .info h2 {
   margin: 0; /* マージンを削除 */
   font-size: 20px; /* フォントサイズは20px */
@@ -44,14 +44,14 @@ body {
   opacity: 0.7; /* 少し透明に */
 }
 
-/* コントロールボタンのコンテナ */
+/* 再生ボタンのコンテナ */
 .controls {
   display: flex; /* フレックスボックスレイアウト */
   gap: 20px; /* ボタン間に20pxの隙間を設定 */
   margin-bottom: 20px; /* 下に20pxの余白を追加 */
 }
 
-/* コントロールボタンのスタイル */
+/* 再生ボタンのスタイル */
 .controls button {
   background: transparent; /* 背景は透明 */
   border: 2px solid white; /* 白い枠線 */
@@ -63,12 +63,12 @@ body {
   cursor: pointer; /* ホバー時にカーソルをポインターに変更 */
 }
 
-/* コントロールボタンのホバー効果 */
+/* 再生ボタンのホバー効果 */
 .controls button:hover {
   background: rgba(255, 255, 255, 0.15); /* ホバー時に背景色を少し透明に */
 }
 
-/* プログレスバー周りのエリア */
+/* シークバー周りのエリア */
 .progress-area {
   display: flex; /* フレックスボックスレイアウト */
   align-items: center; /* 垂直方向に中央揃え */
@@ -76,7 +76,7 @@ body {
   margin-bottom: 15px; /* 下に15pxの余白を追加 */
 }
 
-/* プログレスバーの幅 */
+/* シークバーの幅 */
 #progress {
   width: 220px; /* プログレスバーの横幅 */
 }
@@ -90,3 +90,19 @@ body {
   font-size: 14px; /* フォントサイズは14px */
   cursor: pointer; /* ホバー時にカーソルをポインターに変更 */
 }
+
+/* 全体を中央に配置するためのラッパー */
+.center-wrapper {
+  display: flex;
+  justify-content: center;   /* 横方向の中央 */
+  align-items: center;       /* 縦方向の中央 */
+  min-height: calc(100vh - 80px); /* 戻るボタンの高さ分を引く */
+}
+
+/* プレイヤー自身も中央寄せしやすく */
+.player {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
