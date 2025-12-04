@@ -28,8 +28,10 @@
 			<li><a href="ShowRanking" class="menu">ランキング</a></li>
 			<li><a href="importMusic.jsp" class="menu">曲追加</a></li>
 			<li><a href="login.jsp" class="menu">ログイン</a></li>
+			<p>
 			<li><a>ログアウト</a></li>
 			<li><a href="deleteUser.jsp" class="menu">アカウント削除</a></li>
+			</p>
 		</ul>
 	</nav>
 

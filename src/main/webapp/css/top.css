@@ -136,11 +136,33 @@ body {
     list-style: none; /* デフォルトマーカーなし */
     padding: 0;
 }
+
 .side-menu li {
-    margin: 20px; /* アイテム間隔 */
-    opacity: 0; /* 初期は透明 */
-    transform: translateX(-20px); /* 左から移動してくる */
+    list-style: none;
+	color: #000000;
+}
+
+.side-menu li a {
+    display: flex;
+    background: #ffffff;
+    color: #000000;
+    padding: 12px 28px;
+    margin: 20px;
+    width: 200px;
+    height: 50px;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+
+    transform: translateX(-20px);
     transition: 0.3s;
+}
+.side-menu ul p{
+	margin: 300px;
+}
+.side-menu li a:hover {
+	
+    background: rgb(128, 128, 128); /* ホバー時の背景色変更 */
 }
 #menu-check:checked ~ .side-menu ul li {
     opacity: 1; /* 表示 */
