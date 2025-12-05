@@ -28,11 +28,4 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/main/webapp/png/MusiCon_Logo_touka.png</name>
-			<type>1</type>
-			<location>/Users/yamashitaryu/Downloads/MusiCon_Logo_touka.png</location>
-		</link>
-	</linkedResources>
 </projectDescription>
