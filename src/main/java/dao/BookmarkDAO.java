@@ -35,9 +35,13 @@ public class BookmarkDAO {
 			String sql_get_userid = "SELECT USER_ID FROM USERS WHERE USER_NAME=?";
 			PreparedStatement pStmt1 = conn.prepareStatement(sql_get_userid);
 			pStmt1.setString(1, user.getUserName());
+			System.out.println("username:" + user.getUserName());
 			ResultSet rs1 = pStmt1.executeQuery();
-			int int_userid = rs1.getInt("USER_ID");
-
+			int int_userid = 0;
+			if(rs1.next()) {
+				int_userid = rs1.getInt("USER_ID");
+			}
+			
 			// SELECT文の準備（データベースからbookmarksを取得）
 			// 取得したユーザIDと一致しているBookmarksテーブルのレコードを全て取得
 			String sql_bookmark = "SELECT * FROM BOOKMARKS WHERE B_USER=? ORDER BY BOOKMARK_ID";
