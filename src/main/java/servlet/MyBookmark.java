@@ -3,8 +3,6 @@ package servlet;
 import java.io.IOException;
 import java.util.List;
 
-import dao.BookmarkDAO;
-import dao.MusicDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -12,6 +10,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+
+import dao.BookmarkDAO;
+import dao.MusicDAO;
 import model.Bookmark;
 import model.Music;
 import model.User;
@@ -25,6 +26,8 @@ public class MyBookmark extends HttpServlet {
 			throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
+		
+		MyBookmarkLogic logic = new MyBookmarkLogic();
 
 		// ログインユーザーを取得
 		HttpSession session = request.getSession();
@@ -46,7 +49,7 @@ public class MyBookmark extends HttpServlet {
 			MusicDAO musicDAO = new MusicDAO();
 			Music music = musicDAO.playMusicById(musicId);
 
-			MyBookmarkLogic logic = new MyBookmarkLogic();
+			
 			boolean result = logic.execute(user, music);
 
 			// 結果メッセージを設定
@@ -61,7 +64,9 @@ public class MyBookmark extends HttpServlet {
 
 		// ブックマーク一覧を取得
 		BookmarkDAO bookmarkDAO = new BookmarkDAO();
-		List<Bookmark> bookmarkList = bookmarkDAO.getBookmark(user);
+		List<Bookmark> bookmarkList = logic.getBookmark(user);
+		System.out.println("Servletでブックマーク出力:" + bookmarkList);
+		
 
 		// セッションにブックマーク一覧を保存
 		session.setAttribute("bookmarkList", bookmarkList);

@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+
 import model.Music;
 import model.logic.PlayMusicLogic;
 
@@ -31,6 +32,7 @@ public class PlayMusic extends HttpServlet {
 			// ログインチェック
 			HttpSession session = request.getSession();
 			String userName = (String) session.getAttribute("user_name");
+			System.out.println("userName:" + userName);
 			if (userName == null) {
 				response.sendRedirect(request.getContextPath() + "/jsp/login.jsp");
 				return;

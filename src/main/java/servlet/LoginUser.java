@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+
 import model.User;
 import model.logic.LoginUserLogic;
 
@@ -52,6 +53,7 @@ public class LoginUser extends HttpServlet {
 			// セッションスコープにユーザーIDを保存
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", user);
+			session.setAttribute("user_name", user_name);
 			// PlayMuzicページへリダイレクト
 			response.sendRedirect(request.getContextPath() + "/PlayMusic");
 			System.out.print("でけた！");
