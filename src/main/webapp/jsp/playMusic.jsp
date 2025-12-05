@@ -16,12 +16,16 @@
 
 <body>
 
-	<a href="${pageContext.request.contextPath}/PlayMusic" class="back-btn">←
-		topに戻る</a>
+	<div class="reverse">
+		<a href="${pageContext.request.contextPath}/PlayMusic"> <img
+			src="${pageContext.request.contextPath}/png/MusiConLogo.png"
+			alt="TOPに戻る" class="reverse-img">
+		</a>
+	</div>
 
 	<%
-    Music music = (Music) request.getAttribute("music");
-%>
+	Music music = (Music) request.getAttribute("music");
+	%>
 
 	<!-- ▼ 追加：中央配置用のラッパー ▼ -->
 	<div class="center-wrapper">

@@ -14,7 +14,10 @@
 </head>
 <body>
 	<div class="reverse">
-		<a href="${pageContext.request.contextPath}/PlayMusic" class="top">TOP</a>
+		<a href="${pageContext.request.contextPath}/PlayMusic"> 
+		<img src="${pageContext.request.contextPath}/png/MusiConLogo.png"
+			alt="TOPに戻る" class="reverse-img">
+		</a>
 	</div>
 	<%-- ページタイトル --%>
 	<div class="rank-title">人気曲ランキング</div>
