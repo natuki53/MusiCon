@@ -68,6 +68,13 @@
 					</button>
 				</form>
 
+				<!-- ブックマーク -->
+				<form action="${pageContext.request.contextPath}/MyBookmark"
+					method="post">
+					<input type="hidden" name="id" value="<%=music.getId()%>">
+					<button type="submit" class="like-btn">ブックマーク</button>
+				</form>
+
 				<a
 					href="${pageContext.request.contextPath}/MyBookmark?id=<%=music.getId()%>">⭐ブックマーク</a>
 

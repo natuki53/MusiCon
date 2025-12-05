@@ -71,4 +71,42 @@ public class MyBookmark extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+
+		// ログインユーザーを取得
+		HttpSession session = request.getSession();
+		String userName = (String) session.getAttribute("user_name");
+		if (userName == null) {
+			response.sendRedirect(request.getContextPath() + "/jsp/login.jsp");
+			return;
+		}
+		User user = new User(userName, ""); // パスワードはブックマーク処理では不要
+
+		// クリックされたMusic IDを取得
+		String musicIdStr = request.getParameter("id");
+		if (musicIdStr != null) {
+			int musicId = Integer.parseInt(musicIdStr);
+
+			// Music情報取得
+			MusicDAO musicDAO = new MusicDAO();
+			Music music = musicDAO.playMusicById(musicId);
+
+			MyBookmarkLogic logic = new MyBookmarkLogic();
+			boolean result = logic.execute(user, music);
+
+			// 結果メッセージを設定
+			if (result) {
+				request.setAttribute("bookmarkMessage", "ブックマークに追加しました！");
+			} else {
+				request.setAttribute("bookmarkMessage", "すでに登録済みです。");
+			}
+
+			// PlayMusicに戻す
+			response.sendRedirect(request.getContextPath() + "/PlayMusic?id=" + musicId);
+		}
+
+	}
+
 }
