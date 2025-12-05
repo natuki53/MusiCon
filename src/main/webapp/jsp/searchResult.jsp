@@ -13,8 +13,11 @@
 </head>
 <body>
 	<%-- ページタイトル --%>
-	<div class="top-area">
-		<a href="${pageContext.request.contextPath}/PlayMusic" class="top">TOP</a>
+	<div class="reverse">
+		<a href="${pageContext.request.contextPath}/PlayMusic"> 
+		<img src="${pageContext.request.contextPath}/png/MusiConLogo.png"
+			alt="TOPに戻る" class="reverse-img">
+		</a>
 	</div>
 
 	<h1>検索結果</h1>

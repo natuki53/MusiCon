@@ -25,6 +25,8 @@ session.setAttribute("musicList", musicList);
 	href="${pageContext.request.contextPath}/css/top.css">
 </head>
 <body>
+<img src="${pageContext.request.contextPath}/png/MusiConLogo.png"
+						class="icon" width="180" alt="ロゴアイコン">
 	<%-- チェックボックス(非表示) --%>
 	<input type="checkbox" id="menu-check" class="menu-check">
 
@@ -47,9 +49,9 @@ session.setAttribute("musicList", musicList);
 				href="${pageContext.request.contextPath}/jsp/importMusic.jsp"
 				class="menu">曲追加</a></li>
 			<li><a
-				href="${pageContext.request.contextPath}/jsp/importMusic.jsp"
+				href="${pageContext.request.contextPath}/jsp/.jsp"
 				class="menu">曲一覧</a></li>
-			<li><a href="${pageContext.request.contextPath}/Logout"
+			<li><a href="${pageContext.request.contextPath}/jsp/.jsp"
 				class="menu">ログアウト</a></li>
 			<li><a
 				href="${pageContext.request.contextPath}/jsp/deleteUser.jsp"
@@ -90,7 +92,10 @@ session.setAttribute("musicList", musicList);
 				<!-- クリックすると MusicServlet?id=○○ に飛び、play.jsp で再生画面へ -->
 				<a
 					href="${pageContext.request.contextPath}/PlayMusic?id=<%=m.getId()%>"
-					class="music-area btn-flat"> <span><%=m.getTitle()%></span>
+					class="music-area btn-flat"> 
+					<div class="title"><%=m.getTitle()%></div>
+					<div class="artist"><%=m.getArtist()%></div>
+					<div class="time"><%=m.getMusicTime() / 100%>:<%= m.getMusicTime() % 100%></div>
 				</a>
 				<br>
 				<br>
