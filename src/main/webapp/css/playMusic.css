@@ -143,3 +143,48 @@ body {
   align-items: center;
 }
 
+									/* 追加した部分 */
+/* ▼ 音量バー全体（progress-area と統一） */
+.volume-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  opacity: 0.9;
+}
+
+/* ▼ スピーカーアイコン */
+#volume-icon {
+  font-size: 20px;
+  color: white;
+}
+
+/* ▼ 音量スライダー */
+#volume {
+  width: 140px;
+  -webkit-appearance: none;
+  height: 6px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* ▼ 丸いつまみ */
+#volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#volume::-webkit-slider-thumb:hover {
+  background: #ddd;
+}
+
+
+								/* 追加した部分 */
