@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpSession;
 
 import dao.BookmarkDAO;
 import dao.MusicDAO;
+import dao.UserDAO;
 import model.Bookmark;
 import model.Music;
 import model.User;
@@ -28,6 +29,12 @@ public class BookmarkPlay extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
+
+		UserDAO udao = new UserDAO();
+		User user2;
+		int userId = udao.getUserId(user2);
+		User user3 = new User(userId);
+		session.setAttribute("user3",user3);
 
 		// ブックマークリストを取得
 		List<Bookmark> bookmarkList = (List<Bookmark>) session.getAttribute("bookmarkList");
@@ -107,7 +114,7 @@ public class BookmarkPlay extends HttpServlet {
 		int index = Integer.parseInt(request.getParameter("index"));
 
 		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("loginUser");
+		User user = (User) session.getAttribute("user3");
 		System.out.println("user情報(BookmarkPlay):" + user);
 		Music music = (Music) session.getAttribute("music");
 		

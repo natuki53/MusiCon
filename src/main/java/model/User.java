@@ -19,6 +19,10 @@ public class User {//ユーザー情報格納
 		this.user_pass = user_pass;
 		this.user_id = user_id;
 	}
+	public User(int user_id){
+		this.user_id = user_id;
+	}
+	
 	public String getUserName() { return user_name; }
 	public String getUserPass() { return user_pass; }
 	public int getUserId() { return user_id; }
