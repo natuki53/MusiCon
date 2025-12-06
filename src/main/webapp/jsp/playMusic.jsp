@@ -87,9 +87,6 @@
 					<button type="submit" class="like-btn">ブックマーク</button>
 				</form>
 
-				<a
-					href="${pageContext.request.contextPath}/MyBookmark?id=<%=music.getId()%>">⭐ブックマーク</a>
-
 			</div>
 
 		</div>
