@@ -181,8 +181,11 @@ public class UserDAO {
 			pStmt.setString(1, user.getUserName());
 			
 			ResultSet rs = pStmt.executeQuery();
-			return rs.getInt("USER_ID");
-			
+			if (rs.next()) {
+				return rs.getInt("USER_ID");
+			} else {
+				return 0;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace(); // SQLエラーを表示
 			return 0;
