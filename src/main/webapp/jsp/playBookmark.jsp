@@ -17,14 +17,14 @@
 		class="back-btn">← ブックマークリストへ戻る</a>
 
 	<%
-    Music music = (Music) request.getAttribute("music");
-    int index = (int) request.getAttribute("index");
-    List<Music> musicList = (List<Music>) request.getAttribute("musicList");
-    int total = musicList.size();
+	Music music = (Music) request.getAttribute("music");
+	int index = (int) request.getAttribute("index");
+	List<Music> musicList = (List<Music>) request.getAttribute("musicList");
+	int total = musicList.size();
 
-    int nextIndex = (index + 1) % total;
-    int prevIndex = (index - 1 + total) % total;
-%>
+	int nextIndex = (index + 1) % total;
+	int prevIndex = (index - 1 + total) % total;
+	%>
 
 	<div class="center-wrapper">
 		<div class="player">
@@ -64,6 +64,21 @@
 					method="post">
 					<input type="hidden" name="id" value="<%=music.getId()%>">
 					<button type="submit" class="like-btn">⭐ブックマーク</button>
+				</form>
+
+				<form action="${pageContext.request.contextPath}/BookmarkPlay"
+					method="post">
+					<input type="hidden" name="id" value="<%=music.getId()%>">
+					<input type="hidden" name="index" value="<%=index%>">
+
+					<%
+					boolean bookmarked = (Boolean) request.getAttribute("isBookmarked");
+					%>
+
+					<button type="submit" class="like-btn"
+						style="background:<%=bookmarked ? "#f7d358" : "#dddddd"%>">
+						<%=bookmarked ? "★ ブックマーク解除" : "☆ ブックマーク"%>
+					</button>
 				</form>
 
 			</div>
