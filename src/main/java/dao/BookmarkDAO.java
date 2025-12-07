@@ -193,7 +193,7 @@ public class BookmarkDAO {
 		
 		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)){
 			
-			String sql_existing_check = "SELECT * FROM BOOKMARKS WHERE B_USER = ? AND B_MUSIC = ?";
+			String sql_existing_check = "SELECT B_USER B_MUSIC FROM BOOKMARKS WHERE B_USER = ? AND B_MUSIC = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql_existing_check);
 			
 			pStmt.setInt(1, user.getUserId());
