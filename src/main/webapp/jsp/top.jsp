@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page
-	import="java.util.List, model.Music, model.logic.PlayMusicLogic"%>
+	import="java.util.List, model.Music,service.PlayMusicService"%>
 <%
 // ログインチェック
 String userName = (String) session.getAttribute("user_name");
@@ -11,7 +11,7 @@ if (userName == null) {
 }
 
 // 曲一覧を取得
-PlayMusicLogic logic = new PlayMusicLogic();
+PlayMusicService logic = new PlayMusicService();
 List<Music> musicList = logic.getMusicList();
 session.setAttribute("musicList", musicList);
 %>

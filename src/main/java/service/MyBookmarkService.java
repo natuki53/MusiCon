@@ -1,4 +1,4 @@
-package model.logic;
+package service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,33 +8,50 @@ import model.Bookmark;
 import model.Music;
 import model.User;
 
-public class MyBookmarkLogic {
+/**
+ * ブックマークに関するビジネスロジックを提供するサービスクラス
+ */
+public class MyBookmarkService {
 	private BookmarkDAO dao = new BookmarkDAO();
 
+	/**
+	 * ブックマークを登録または削除
+	 * @param user ユーザー情報
+	 * @param music 音楽情報
+	 * @return 成功時はtrue、失敗時はfalse
+	 */
 	public boolean execute(User user, Music music) {
 		return dao.registerBookmark(user, music);
 	}
 
+	/**
+	 * ブックマークの登録状態を切り替え
+	 * @param user ユーザー情報
+	 * @param music 音楽情報
+	 * @return 成功時はtrue、失敗時はfalse
+	 */
 	public boolean toggleBookmark(User user, Music music) {
-		BookmarkDAO dao = new BookmarkDAO();
-
 		if (dao.isBookmarked(user, music)) {
-			// すでに登録されている → 削除
 			return dao.deleteBookmark(user, music);
 		} else {
-			// 登録されていない → 登録
 			return dao.registerBookmark(user, music);
 		}
 	}
 
-	// Bookmark データ取得
+	/**
+	 * ブックマーク一覧を取得
+	 * @param user ユーザー情報
+	 * @return ブックマークリスト
+	 */
 	public List<Bookmark> getBookmark(User user) {
-		List<Bookmark> bookmarkList = dao.getBookmark(user);
-		System.out.println("Logicでリスト取得:" + bookmarkList);
-		return bookmarkList;
+		return dao.getBookmark(user);
 	}
 
-	// ▼追加：Musicのリスト形式で返すバージョン（再生する場合に使用）
+	/**
+	 * ブックマーク一覧をMusicリスト形式で取得
+	 * @param user ユーザー情報
+	 * @return 音楽リスト
+	 */
 	public List<Music> getBookmarkMusicList(User user) {
 		List<Bookmark> bookmarkList = dao.getBookmark(user);
 		List<Music> musicList = new ArrayList<>();
@@ -43,7 +60,6 @@ public class MyBookmarkLogic {
 			musicList.add(b.getMusic());
 		}
 
-		System.out.println("Musicリスト変換: " + musicList);
 		return musicList;
 	}
 }
