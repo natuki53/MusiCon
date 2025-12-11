@@ -74,22 +74,24 @@
 
 				</div>
 
-				<!-- いいね -->
-				<form action="${pageContext.request.contextPath}/LikeMusic"
-					method="post">
-					<input type="hidden" name="id" value="<%=music.getId()%>">
-					<button type="submit" class="like-btn">
-						いいね！ (<%=music.getLikes()%>)
-					</button>
-				</form>
+				<div class="like-bookmark-box">
+					<!-- いいね -->
+					<form action="${pageContext.request.contextPath}/LikeMusic"
+						method="post">
+						<input type="hidden" name="id" value="<%=music.getId()%>">
+						<button type="submit" class="like-btn">
+							いいね！ (<%=music.getLikes()%>)
+						</button>
+					</form>
 
-				<!-- ブックマーク -->
-				<form action="${pageContext.request.contextPath}/MyBookmark"
-					method="post">
-					<input type="hidden" name="id" value="<%=music.getId()%>">
-					<button type="submit" class="like-btn">ブックマーク</button>
-				</form>
-
+					<!-- ブックマーク -->
+					<form action="${pageContext.request.contextPath}/MyBookmark"
+						method="post">
+						<input type="hidden" name="id" value="<%=music.getId()%>">
+						<button type="submit" class="like-btn">ブックマーク</button>
+					</form>
+				</div>
+				
 			</div>
 
 		</div>
