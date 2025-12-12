@@ -5,7 +5,7 @@ package config;
 public class DatabaseConfig {
 	
 	// データベース接続URL
-	public static final String JDBC_URL = "jdbc:mysql//localHost/musicon";
+	public static final String JDBC_URL = "jdbc:mysql://localHost/musicon";
 	
 	// データベースユーザー名
 	public static final String DB_USER = "root";

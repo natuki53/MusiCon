@@ -19,7 +19,7 @@ import model.Music;
 import model.User;
 import service.MyBookmarkService;
 
-@WebServlet("/BookmarkPlay")
+@WebServlet("/BookmarkPlay2")
 public class BookmarkPlay extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

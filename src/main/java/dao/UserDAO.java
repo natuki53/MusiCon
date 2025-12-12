@@ -19,7 +19,7 @@ public class UserDAO {
 
 		try (Connection conn = DatabaseConnection.getConnection()) {
 
-			String sql = "SERECT * FROM USERS WHERE USER_NAME=? AND USER_PASS=? AND IS_DELETE=0";
+			String sql = "SELECT * FROM USERS WHERE USER_NAME=? AND USER_PASS=? AND IS_DELETED=0";
 			try (PreparedStatement pStmt = conn.prepareStatement(sql)) {
 				pStmt.setString(1, userName);
 				pStmt.setString(2, password);
