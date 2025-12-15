@@ -24,19 +24,19 @@
 			<div class="form-item">
 				<!-- タイトル入力欄（DBのtitleに入る） -->
 				<!--タイトル：-->
-				<input type="text" name="title" placeholder="タイトル" required>
+				<input type="text" name="title" placeholder="タイトル（必須）" required>
 			</div>
 
 			<!-- アーティスト入力欄（DBのartistに入る） -->
 			<!--アーティスト名：-->
 			<div class="form-item">
-				<input type="text" name="artist" placeholder="アーティスト" required>
+				<input type="text" name="artist" placeholder="アーティスト（必須）" required>
 			</div>
 			<!-- ジャンル入力欄（DBのgenreに入る） -->
 			<!--ジャンル：-->
-			<div class="pull-down">
-				<select name="genre">
-					<option class="head">ジャンルを選択</option>
+			<div class="form-item pull-down">
+				<select name="genre" required>
+					<option>ジャンルを選択（必須）</option>
 					<option value="JPOP">　J-POP</option>
 					<option value="KPOP">　K-POP</option>
 					<option value="HPOP">　HIPHOP</option>
@@ -53,25 +53,25 @@
 			<!-- 作詞家入力欄（DBのlyricistに入る） -->
 			<!--作詞家：-->
 			<div class="form-item">
-				<input type="text" name="lyricist" placeholder="作詞者" required>
+				<input type="text" name="lyricist" placeholder="作詞者（必須）" required>
 			</div>
 
 			<!-- 作曲家入力欄（DBのcomposerに入る） -->
 			<!--作曲家：-->
 			<div class="form-item">
-				<input type="text" name="composer" placeholder="作曲者" required>
+				<input type="text" name="composer" placeholder="作曲者（必須）" required>
 			</div>
 
 			<!-- 発売年月日入力欄（DBのrelease_ymdに入る） -->
 			<!--発売年月日：-->
 			<div class="form-item">
-				<input type="text" name="releaseYMD" placeholder="発売年月日（半角8桁：YYYYMMDD）" required>
+				<input type="text" name="releaseYMD" placeholder="発売年月日（半角8桁：YYYYMMDD）">
 			</div>
 
 			<!-- 再生時間入力欄（DBのmusic_timeに入る） -->
 			<!--再生時間：-->
 			<div class="form-item">
-				<input type="text" name="music_time" placeholder="再生時間（半角4桁：mmss）" required>
+				<input type="text" name="music_time" placeholder="再生時間（半角4桁：mmss）（必須）" required>
 			</div>
 
 			<!-- 音楽ファイル選択欄（mp3などの音声ファイル） -->
