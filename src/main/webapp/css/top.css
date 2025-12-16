@@ -99,13 +99,14 @@ body {
 .side-menu {
     position: fixed;
     top: 0;
-    right: -260px; /* 初期位置：画面外 */
-    width: 260px;
+    right: -300px; /* 初期位置：画面外 */
+    width: 300px;
     height: 100%;
     background: #ffffff; /* 白背景 */
     transition: 0.4s; /* スライドアニメーション */
     padding-top: 80px; /* 上部余白 */
     z-index: 1000; /* ハンバーガーの下 */
+	font-family: "Hiragino Mincho ProN", "Yu Mincho", "MS Mincho", serif;
 }
 
 /* サイドメニュー内を上下で分割する */
@@ -181,9 +182,10 @@ body {
     display: flex;
     background: #ffffff;
     color: #000000;
-    padding: 12px 28px;
+    padding: 12px 20px;
     margin: 20px;
-    width: 200px;
+	margin-right: 20px;
+    width: 280px;
     height: 50px;
     font-weight: bold;
     align-items: center;

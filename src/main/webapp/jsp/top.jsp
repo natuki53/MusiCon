@@ -42,22 +42,22 @@ session.setAttribute("musicList", musicList);
 	<nav class="side-menu">
 		<ul class="menu-list">
 			<li><a href="${pageContext.request.contextPath}/MyBookmark"
-				class="menu">マイページ</a></li>
+				class="menu">My page / マイページ</a></li>
 			<li><a href="${pageContext.request.contextPath}/ShowRanking"
-				class="menu">ランキング</a></li>
+				class="menu">Ranking / ランキング</a></li>
 			<li><a
 				href="${pageContext.request.contextPath}/jsp/importMusic.jsp"
-				class="menu">曲追加</a></li>
+				class="menu">Add music / 曲追加</a></li>
 			<li><a
 				href="${pageContext.request.contextPath}/jsp/.jsp"
-				class="menu">曲一覧</a></li>
+				class="menu">Music list / 楽曲一覧</a></li>
 		</ul>
 		<ul class="menu-bottom">
 			<li><a href="${pageContext.request.contextPath}/Logout"
-				class="menu logout">ログアウト</a></li>
+				class="menu logout">Log out / ログアウト</a></li>
 			<li><a
 				href="${pageContext.request.contextPath}/jsp/deleteUser.jsp"
-				class="menu delete">アカウント削除</a></li>
+				class="menu delete">Delete account / アカウント削除</a></li>
 		</ul>
 	</nav>
 
