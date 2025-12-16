@@ -185,9 +185,10 @@ body {
     color: #000000;
     padding: 12px 20px;
     margin: 20px;
-	margin-right: 20px;
+	margin-right: 23px;
     width: 280px;
     height: 50px;
+	font-size: 18px;
     font-weight: bold;
     align-items: center;
     justify-content: center;
