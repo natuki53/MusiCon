@@ -58,6 +58,7 @@ body {
     align-items: center; /* 横方向中央 */
     transition: transform .2s, background .2s, box-shadow .2s; /* アニメーション */
     z-index: 1001; /* メニューより前面 */
+	border-radius: 20px;
 }
 
 /* ホバー時の拡大・影・背景色 */
