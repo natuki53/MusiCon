@@ -9,26 +9,51 @@
 	}
 %>
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>MusiCon</title>
-<%-- cssの連携 --%>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/top.css">
+  <meta charset="UTF-8" />
+  <title>MUSICON</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
 </head>
 <body>
-	<div class="main">
-		<div class="container" style="text-align: center; padding: 50px;">
-			<h1 style="font-size: 3em; margin-bottom: 50px;">MusiCon</h1>
 
-			<div style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
-				<a href="${pageContext.request.contextPath}/jsp/login.jsp" class="menu" style="display: inline-block; padding: 15px 40px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px; font-size: 1.2em;">ログイン</a>
+  <!-- 上のマルキー -->
+  <div class="marquee top">
+    <div class="track" id="track-top">
+      <span class="item">MUSICON</span>
+    </div>
+  </div>
 
-				<a href="${pageContext.request.contextPath}/jsp/createUser.jsp" class="menu" style="display: inline-block; padding: 15px 40px; background-color: #2196F3; color: white; text-decoration: none; border-radius: 5px; font-size: 1.2em;">新規登録</a>
+  <!-- メイン -->
+  <main class="hero">
+    <div class="left">
+      <p class="catch">日常を音楽と共に</p>
+      <h1 class="logo">MUSICON</h1>
+      <a href="${pageContext.request.contextPath}/jsp/login.jsp" button class="login-btn">ログイン</button></a>
+      <a href="${pageContext.request.contextPath}/jsp/createUser.jsp" class="first-link">初めての方はこちら</a>
+    </div>
 
-				<a href="${pageContext.request.contextPath}/jsp/deleteUser.jsp" class="menu" style="display: inline-block; padding: 15px 40px; background-color: #f44336; color: white; text-decoration: none; border-radius: 5px; font-size: 1.2em;">アカウント削除</a>
-			</div>
-		</div>
-	</div>
+    <div class="right">
+      <p>
+        好きな音楽をプレイリストに追加して<br>
+        日常を豊かにしよう。
+      </p>
+    </div>
+  </main>
+
+  <!-- 下のマルキー -->
+  <div class="marquee bottom">
+    <div class="track" id="track-bottom">
+      <span class="item">MUSICON</span>
+    </div>
+  </div>
+
+  <script defer src="${pageContext.request.contextPath}/js/index.js"></script>
 </body>
 </html>

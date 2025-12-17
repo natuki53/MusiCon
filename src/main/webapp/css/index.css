@@ -1,1 +1,101 @@
 @charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #6a006a;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+}
+
+/* ===== MARQUEE 上下の「MUSICON」の帯 ===== */
+.marquee {
+  overflow: hidden;
+  height: 50px;
+  border-top: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: scroll 20s linear infinite;
+  will-change: transform;
+}
+
+.marquee.bottom .track {
+  animation-direction: reverse;
+}
+
+.item {
+  font-family: 'Alfa Slab One', cursive;
+  font-size: 28px;
+  line-height: 50px;
+  white-space: nowrap;
+  padding-right: 40px;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ===== HERO ===== */
+.hero {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  padding: 80px;
+}
+
+.left {
+  max-width: 50%;
+}
+
+.catch {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.logo {
+  font-family: 'Alfa Slab One', cursive;
+  font-size: 96px;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}
+
+.login-btn {
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 40px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.first-link {
+  display: block;
+  margin-top: 16px;
+  font-size: 14px;
+  color: #fff;
+  text-decoration: underline;
+  padding: 10px 0;
+}
+
+.right {
+  max-width: 40%;
+  font-size: 20px;
+  line-height: 1.8;
+}
