@@ -118,146 +118,117 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-/* =====================================================
-   イコライザー
-===================================================== */
-window.addEventListener("DOMContentLoaded", () => {
-
-  const audio = document.getElementById("audio");
-  const canvas = document.getElementById("equalizer");
-  const ctx = canvas.getContext("2d");
-  
-  // CanvasサイズをCSSと一致させる
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
-
-
-  /* ▼ Canvasの実サイズをCSSと一致させる */
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
-
-  /* ▼ Web Audio API 初期化 */
-  const AudioContext = window.AudioContext || window.webkitAudioContext;
-  const audioCtx = new AudioContext();
-
-  let source; // MediaElementSourceは1回しか作れない
-
-  const analyser = audioCtx.createAnalyser();
-  analyser.fftSize = 64;
-
-  analyser.connect(audioCtx.destination);
-
-  const bufferLength = analyser.frequencyBinCount;
-  const dataArray = new Uint8Array(bufferLength);
-
-  /* ==========================================
-     描画処理
-  ========================================== */
-  function draw() {
-    analyser.getByteFrequencyData(dataArray);
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    const barWidth = canvas.width / bufferLength;
-
-    for (let i = 0; i < bufferLength; i++) {
-      const value = dataArray[i];
-      const barHeight = (value / 255) * canvas.height;
-
-      const x = i * barWidth;
-      const y = canvas.height - barHeight;
-
-	  ctx.fillStyle = "white";
-      ctx.fillRect(x, y, barWidth - 2, barHeight);
-    }
-
-    requestAnimationFrame(draw);
-  }
-
-  /* ==========================================
-     再生時にAudioContextを有効化
-  ========================================== */
-  audio.addEventListener("play", () => {
-
-    if (audioCtx.state === "suspended") {
-      audioCtx.resume();
-    }
-
-    /* ▼ sourceは1回だけ生成 */
-    if (!source) {
-      source = audioCtx.createMediaElementSource(audio);
-      source.connect(analyser);
-    }
-
-    draw();
-  });
-
-});
-
 /* =========================================
    イコライザー
 ========================================= */
 
-(() => {
+window.addEventListener("DOMContentLoaded", () => {
 
-  const audio = document.getElementById("audio");
+  /* ===============================
+     要素取得
+  =============================== */
+  const audio   = document.getElementById("audio");
   const playBtn = document.getElementById("play");
-  const canvas = document.getElementById("equalizer");
-  const ctx = canvas.getContext("2d");
+  const canvas  = document.getElementById("equalizer");
+  const ctx     = canvas.getContext("2d");
 
-  // Canvasサイズを実サイズに合わせる（重要）
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
+  /* ===============================
+     見た目設定（ここ触る）
+  =============================== */
+  const BAR_WIDTH = 12; // バー1本の太さ(px)
+  const GAP       = 8;  // バー同士の隙間(px)
 
+  /* ===============================
+     CanvasサイズをCSSと同期
+     （これをしないとボケる）
+  =============================== */
+  function resizeCanvas() {
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
+
+  /* ===============================
+     Web Audio API 初期化
+  =============================== */
   const AudioContext = window.AudioContext || window.webkitAudioContext;
   const audioCtx = new AudioContext();
 
+  // 音の解析担当
   const analyser = audioCtx.createAnalyser();
-  analyser.fftSize = 64;
+  analyser.fftSize = 128; // 値を上げるとバーが細かくなる
 
+  // 周波数データ格納用
+  const dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+  // MediaElementSource は1回しか作れないのでフラグ管理
   let sourceCreated = false;
 
-  const bufferLength = analyser.frequencyBinCount;
-  const dataArray = new Uint8Array(bufferLength);
-
+  /* ===============================
+     描画処理
+  =============================== */
   function draw() {
+
+    // 周波数データ取得
     analyser.getByteFrequencyData(dataArray);
+
+    // 前フレームをクリア
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-	const gap = 10; /* バーの隙間 */
-	const barWidth = (canvas.width - gap * (bufferLength - 1)) / bufferLength;
+    // ▼ 半透明の白 (RED, BLUE, GREEN, 透明度)
+    ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
 
+    const unit = BAR_WIDTH + GAP;
+    const maxBars = Math.floor(canvas.width / unit);
+    const barCount = Math.min(maxBars, dataArray.length);
 
-	let x = 0;
+    const totalWidth = barCount * unit - GAP;
+    const offsetX = (canvas.width - totalWidth) / 2;
 
-	for (let i = 0; i < bufferLength; i++) {
-	  const h = (dataArray[i] / 255) * canvas.height;
+    for (let i = 0; i < barCount; i++) {
 
-	  ctx.fillRect(
-	    x,
-	    canvas.height - h,
-	    barWidth,
-	    h
-	  );
+      const raw = dataArray[i];
 
-	  x += barWidth + gap; /* ← 隙間を考慮 */
-	}
+      // 中央が高くなる補正
+      const centerBoost =
+        Math.sin((i / (barCount - 1)) * Math.PI);
+
+      const h =
+        (raw / 255) *
+        canvas.height *
+        (0.3 + centerBoost * 0.9) * 0.9;
+
+      const x = offsetX + i * unit;
+      const y = canvas.height - h;
+
+      // ▼ 角丸バー描画
+      ctx.beginPath();
+      ctx.roundRect(
+        x,              // X
+        y,              // Y
+        BAR_WIDTH,      // 幅
+        h,              // 高さ
+        6               // 角丸半径
+      );
+      ctx.fill();
+    }
 
     requestAnimationFrame(draw);
   }
 
-  /* =====================================
-     再生ボタンから直接起動する
-  ===================================== */
+
+  /* ===============================
+     再生ボタン押下時
+  =============================== */
   playBtn.addEventListener("click", () => {
 
-    // AudioContext をユーザー操作で解除
+    // ユーザー操作で AudioContext を有効化
     if (audioCtx.state === "suspended") {
       audioCtx.resume();
     }
 
-    // MediaElementSource は1回だけ
+    // MediaElementSource は1回だけ生成
     if (!sourceCreated) {
       const source = audioCtx.createMediaElementSource(audio);
       source.connect(analyser);
@@ -265,10 +236,13 @@ window.addEventListener("DOMContentLoaded", () => {
       sourceCreated = true;
     }
 
-    draw(); // ← 強制的に描画開始
+    // 描画開始
+    draw();
   });
 
-})();
+});
+
+
 
 
 

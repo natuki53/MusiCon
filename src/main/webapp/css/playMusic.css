@@ -318,18 +318,19 @@ body.narrow .controls button {
 /* ▼ イコライザー（画面下部固定表示） */
 #equalizer {
   position: fixed;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%); /* ← 中央揃え */
+  bottom: -10px;
+  left: 10px;
 
   width: 100%;
-  max-width: 900px;            /* ← 追加（中央に収める） */
-  height: 180px;
+  height: 300px;
 
-  color: white;
-  border-radius: 0;
+  backdrop-filter: blur(2px);
+  background: transparent;
+  pointer-events: none;
   z-index: 1000;
 }
+
+
 
 
 
