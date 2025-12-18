@@ -28,26 +28,29 @@
     List<Music> list = (List<Music>) session.getAttribute("searchList");
 %>
 	<div class="result-count">
-    <% if (list == null || list.isEmpty() || schWd.length() == 0) { %>
-        "<%=schWd%>" を含む楽曲：0件
-    <% } else { %>
-        "<%=schWd%>" を含む楽曲：<%=list.size()%>件
-    <% } %>
-</div>
+		<% if (list == null || list.isEmpty() || schWd.length() == 0) { %>
+		"<%=schWd%>" を含む楽曲：0件
+		<% } else { %>
+		"<%=schWd%>" を含む楽曲：<%=list.size()%>件
+		<% } %>
+	</div>
 
-<% if (list != null && !list.isEmpty() && schWd.length() != 0) { %>
-<div class="container">
-    <% for (model.Music m : list) { %>
-        <a
-            href="${pageContext.request.contextPath}/PlayMusic?id=<%=m.getId()%>"
-            class="music-area btn-flat">
-            <div class="title">タイトル：<%=m.getTitle()%></div>
-            <div class="artist">アーティスト：<%=m.getArtist()%></div>
-            <div class="like">いいね：<%=m.getLikes()%></div>
-        </a>
-    <% } %>
-</div>
-<% } %>
+	<% if (list != null && !list.isEmpty() && schWd.length() != 0) { %>
+	<div class="container">
+		<% for (model.Music m : list) { %>
+		<a
+			href="${pageContext.request.contextPath}/PlayMusic?url=<%=java.net.URLEncoder.encode(m.getUrl(), "UTF-8")%>"
+			class="music-area btn-flat">
+			<div class="title">
+				タイトル：<%=m.getTitle()%></div>
+			<div class="artist">
+				アーティスト：<%=m.getArtist()%></div>
+			<div class="like">
+				いいね：<%=m.getLikes()%></div>
+		</a>
+		<% } %>
+	</div>
+	<% } %>
 
 
 </body>

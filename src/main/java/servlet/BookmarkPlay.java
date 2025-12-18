@@ -17,9 +17,9 @@ import dao.MusicDAO;
 import model.Bookmark;
 import model.Music;
 import model.User;
-import model.logic.MyBookmarkLogic;
+import service.MyBookmarkService;
 
-@WebServlet("/BookmarkPlay")
+@WebServlet("/BookmarkPlay2")
 public class BookmarkPlay extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -134,7 +134,7 @@ public class BookmarkPlay extends HttpServlet {
 		boolean isBookmarked = new BookmarkDAO().isBookmarked(user, music);
 		request.setAttribute("isBookmarked", isBookmarked);
 
-		MyBookmarkLogic logic = new MyBookmarkLogic();
+		MyBookmarkService logic = new MyBookmarkService();
 		logic.toggleBookmark(user, music);
 
 		// 元の曲に戻る
