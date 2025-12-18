@@ -168,7 +168,7 @@ window.addEventListener("DOMContentLoaded", () => {
       const x = i * barWidth;
       const y = canvas.height - barHeight;
 
-      ctx.fillStyle = "rgba(255,255,255,0.9)";
+	  ctx.fillStyle = "white";
       ctx.fillRect(x, y, barWidth - 2, barHeight);
     }
 
@@ -225,20 +225,24 @@ window.addEventListener("DOMContentLoaded", () => {
     analyser.getByteFrequencyData(dataArray);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    const barWidth = canvas.width / bufferLength;
+	const gap = 10; /* バーの隙間 */
+	const barWidth = (canvas.width - gap * (bufferLength - 1)) / bufferLength;
 
-    for (let i = 0; i < bufferLength; i++) {
-      const v = dataArray[i];
-      const h = (v / 255) * canvas.height;
 
-      ctx.fillStyle = "white";
-      ctx.fillRect(
-        i * barWidth,
-        canvas.height - h,
-        barWidth - 2,
-        h
-      );
-    }
+	let x = 0;
+
+	for (let i = 0; i < bufferLength; i++) {
+	  const h = (dataArray[i] / 255) * canvas.height;
+
+	  ctx.fillRect(
+	    x,
+	    canvas.height - h,
+	    barWidth,
+	    h
+	  );
+
+	  x += barWidth + gap; /* ← 隙間を考慮 */
+	}
 
     requestAnimationFrame(draw);
   }
