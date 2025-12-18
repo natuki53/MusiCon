@@ -63,6 +63,7 @@ body{
 	}
 /* ログインタイトル */
 .cUser-title{
+	font-family: "Gamja+Flower", sans-serif;
 	font-size: 48px;  /* 大きめのタイトル文字 */
 	margin-bottom: 30px;  /* タイトル下の余白 */
 }

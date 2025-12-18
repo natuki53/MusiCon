@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>ログイン</title>
+<link href="https://fonts.google.com/share?selection.family=Gamja+Flower" rel="stylesheet">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/login.css">
 </head>
