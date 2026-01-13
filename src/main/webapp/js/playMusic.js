@@ -25,7 +25,7 @@ window.addEventListener("DOMContentLoaded", handleResize);
 }
 
 window.addEventListener("resize", handleResize);
-// 初回読み込み時もチェック
+// 初回読み込み時もチェックA
 window.addEventListener("DOMContentLoaded", handleResize);*/
 
 // 再生/停止
