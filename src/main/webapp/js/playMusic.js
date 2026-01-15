@@ -132,7 +132,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* =========================================
-
    イコライザー（重複実装を統合：MediaElementSource は 1回だけ）
 ========================================= */
 
