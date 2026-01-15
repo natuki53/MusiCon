@@ -216,3 +216,11 @@ body {
 		  -webkit-backdrop-filter: blur(25px); /* Safari対策 */
 		border-radius: 10px;  /* 角を丸くする */
 	  	  }
+		  
+	canvas {
+		    position: fixed;
+		    inset: 0;
+		    z-index: -1;
+		    pointer-events: none;
+		    filter: blur(20px);
+	}
