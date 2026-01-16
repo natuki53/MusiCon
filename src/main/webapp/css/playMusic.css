@@ -1,6 +1,11 @@
 /* ▼ 全体のbodyスタイル */
 body {
-  background-color: #A997C6 !important; /* 背景色を薄紫に変更 */
+  background-image: url("../png/backGround.png"); /* ← 画像のパスを指定 */
+  background-size: cover;        /* 画面いっぱいに拡大縮小 */
+  background-position: center;   /* 中央に配置 */
+  background-repeat: no-repeat;  /* 繰り返しなし */
+  min-height: 93vh;
+  margin: 0;
   color: white; /* 文字色は白 */
   font-family: "Arial", sans-serif; /* フォントはArial */
   margin: 0; /* デフォルトのマージンを削除 */
@@ -331,7 +336,7 @@ body.narrow .controls button {
 #equalizer {
   position: fixed;
   bottom: -10px;
-  left: 200px;
+  left: 150px;
 
   width: 100%;
   height: 300px;
