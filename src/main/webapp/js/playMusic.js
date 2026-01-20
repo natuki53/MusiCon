@@ -30,7 +30,7 @@ const durationLabel = document.getElementById("duration");
 		try {
 			localStorage.setItem("music_loop", next ? "true" : "false");
 		} catch (e) {
-			// 保存できなくても動作は継続
+			// 保存できなくても動作は継続する
 		}
 	});
 })();
