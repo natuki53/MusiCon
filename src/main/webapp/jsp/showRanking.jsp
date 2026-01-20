@@ -33,6 +33,8 @@
 	<%-- メニュー --%>
 	<nav class="side-menu">
 		<ul class="menu-list">
+			<li><a href="${pageContext.request.contextPath}/PlayMusic"
+				class="menu">TOP / TOPに戻る</a></li>
 			<li><a href="${pageContext.request.contextPath}/MyPlaylist"
 				class="menu">Playlist / プレイリスト</a></li>
 			<li><a href="${pageContext.request.contextPath}/ShowRanking"

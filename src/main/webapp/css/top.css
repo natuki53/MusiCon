@@ -102,9 +102,10 @@ body {
 .side-menu {
 	position: fixed;
 	top: 0;
-	right: -300px; /* 初期位置：画面外 */
-	width: 300px;
+	right: -100%; /* 初期位置：画面外 */
+	width: 400px;
 	height: 100%;
+	overflow: hidden;
 	background: #ffffff; /* 白背景 */
 	transition: 0.4s; /* スライドアニメーション */
 	padding-top: 80px; /* 上部余白 */
@@ -116,6 +117,12 @@ body {
 .side-menu {
 	display: flex;
 	flex-direction: column;
+}
+
+.user-profile {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 /* 上・下メニュー */
@@ -187,16 +194,15 @@ body {
 	background: #ffffff;
 	color: #000000;
 	padding: 12px 15px;
-	margin: 20px;
-	margin-right: 23px;
-	width: 300px;
+	margin: 20px 0;
+	width: 100%;
 	height: 50px;
 	font-size: 14px;
 	font-weight: bold;
 	align-items: center;
 	justify-content: center;
 	text-decoration: none; /* 下線なし */
-	transform: translateX(-20px);
+	
 	transition: 0.3s;
 }
 .side-menu ul p{
