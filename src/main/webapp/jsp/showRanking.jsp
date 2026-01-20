@@ -78,12 +78,24 @@
 		%>
 		<ul style="list-style: none;">
 			<%
-			int rankcount = 0;
+			int count = 0;
+			int showing_rank = 0;
+			int tmp_like = 0;
+			
 			for (model.Music m : list) {
-				rankcount++;
+				showing_rank++;
+				if (tmp_like == m.getLikes()) {
+					count++;
+					showing_rank--;
+				} else {
+					tmp_like = m.getLikes();
+					showing_rank = showing_rank + count;
+					count = 0;
+				}
+				
 			%>
 
-			<li><div class="rankcount"><%=rankcount+"位"%>
+			<li><div class="rankcount"><%=showing_rank+"位"%>
 					/ いいね：<%=m.getLikes()%>回
 				</div>
 				<a
@@ -108,11 +120,11 @@
 				</a></li>
 			<hr>
 			<%
-			}
+			} // for文の結び
 			%>
 		</ul>
 		<%
-		}
+		} // else文の結び
 		%>
 
 		<%--<ul class="rank-list">
