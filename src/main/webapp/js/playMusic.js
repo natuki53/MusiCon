@@ -93,14 +93,48 @@ document.addEventListener("DOMContentLoaded", () => {
 	let lastVolume = volumeSlider.value;
 	// ▼ 初期値
 	audio.volume = volumeSlider.value;
+	updateVolumeBar(volumeSlider.value);
 	// ▼ 音量スライダー操作
 	volumeSlider.addEventListener("input", () => {
 		const v = Number(volumeSlider.value);
 		audio.volume = v;
 		// ミュート解除時のために保存
 		if (v > 0) lastVolume = v;
+		localStorage.setItem("music_volume", v);
 		updateIcon(v);
+		updateVolumeBar(v);
 	});
+	
+	// ▼ 保存されている音量を復元
+	const savedVolume = localStorage.getItem("music_volume");
+
+	if (savedVolume !== null) {
+	  const v = Number(savedVolume);
+	  audio.volume = v;
+	  volumeSlider.value = v;
+	  updateIcon(v);
+	  updateVolumeBar(v);
+	} else {
+	  // 初回のみデフォルト
+	  audio.volume = volumeSlider.value;
+	  updateVolumeBar(volumeSlider.value);
+	}
+
+	// ▼ 音量シークバーの色変更関数
+	function updateVolumeBar(value) {
+	  const min = volumeSlider.min || 0;
+	  const max = volumeSlider.max || 1;
+	  const percent = ((value - min) / (max - min)) * 100;
+
+	  volumeSlider.style.background = `
+	    linear-gradient(
+	      to right,
+	      white ${percent}%,
+	      rgba(255,255,255,0.4) ${percent}%
+	    )
+	  `;
+	}
+
 	// ▼ アイコンクリックでミュート / 解除
 	volumeIcon.addEventListener("click", () => {
 		if (audio.volume > 0) {
@@ -108,11 +142,15 @@ document.addEventListener("DOMContentLoaded", () => {
 			lastVolume = audio.volume;  // 元の音量を記憶
 			audio.volume = 0;
 			volumeSlider.value = 0;
+			localStorage.setItem("music_volume", 0);
+			updateVolumeBar(volumeSlider.value);
 			updateIcon(0);
 		} else {
 			// ミュート解除（元の音量に戻す）
 			audio.volume = lastVolume;
 			volumeSlider.value = lastVolume;
+			localStorage.setItem("music_volume", lastVolume);
+			updateVolumeBar(volumeSlider.value);
 			updateIcon(lastVolume);
 		}
 	});
@@ -242,6 +280,6 @@ window.addEventListener("DOMContentLoaded", () => {
 	  isDrawing = false;
 	});
 
-
+	updateVolumeBar(volumeSlider.value);
 
 })();
