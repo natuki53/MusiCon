@@ -338,13 +338,20 @@ body {
 }
 
 .music-area .title {
-    position: absolute;
+    position: relative;
     white-space: nowrap;
-    animation: loopMove 8s linear infinite;
+    animation: none;
     z-index: 1;
     font-size: 20px;
     font-weight: bold;
     color: #5A2D82;
+	transform: translateX(0);
+}
+
+.music-area .title.is-marquee {
+	position: absolute;
+	left: 0;
+	animation: loopMove 8s linear infinite;
 }
 
 .marquee {
