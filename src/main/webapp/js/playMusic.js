@@ -224,3 +224,25 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 });
+
+
+/* タイトルアニメーション */
+const title = document.querySelector(".title");
+const titleText = document.querySelector(".title-text");
+
+if (title && titleText) {
+  const overflow = titleText.scrollWidth - title.clientWidth;
+
+  if (overflow > 0) {
+    const speed = 70; // 70px/秒（ここを調整すると速さが変わる。数字大きいと速い）
+    const duration = overflow / speed;
+
+    titleText.classList.add("marquee");
+    titleText.style.setProperty("--overflow", `${overflow}px`);
+    titleText.style.animationDuration = `${duration}s`;
+  }
+}
+
+
+
+
