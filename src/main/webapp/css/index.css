@@ -107,6 +107,19 @@ body {
 	text-decoration: none;
 }
 
+.work-btn {
+	background: #fff;
+	color: #000;
+	border: none;
+	border-radius: 99px;
+	padding: 14px 40px;
+	size: 20px;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	text-decoration: none;
+}
+
 .first-link {
 	display: block;
 	margin-top: 16px;

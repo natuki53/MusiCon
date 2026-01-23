@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #4b0055;
+  color: #ffffff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+/* header */
+.header {
+  background-color: #ffffff;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  margin-top: -40px;
+  height: 80px;
+  width: 100%;
+}
+
+.icon {
+	width: 10vw;
+	max-width: 75px;  /*最大の幅 */
+	min-width: 40px;  /*最小の幅 */
+	height: auto;
+	margin-top: 10px; /* 上からの余白 */
+	margin-left: 5px; /* 左からの余白 */
+}
+
+.logo {
+  font-family: 'Alfa Slab One', cursive;
+  font-weight: bold;
+  font-size: 22px;
+  margin-right: 10px;
+}
+
+.sub {
+  font-size: 14px;
+}
+
+/* hero */
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.hero-text h1 {
+	font-family: 'Alfa Slab One', cursive;
+  font-size: 48px;
+  margin: 0 0 20px;
+  line-height: 1.2;
+}
+
+.hero-text p {
+	font-family: "MS Mincho", serif;
+  font-size: 20px;
+  line-height: 1.8;
+}
+
+.hero-image {
+  background-color: #d9d9d9;
+  border-radius: 30px;
+  min-height: 260px;
+}
+
+/* info grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background-color: #000000;
+  padding: 20px;
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.label {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 6px;
+}
+
+.value {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* responsive */
+@media screen and (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-text h1 {
+    font-size: 36px;
+  }
+}

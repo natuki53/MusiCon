@@ -58,6 +58,9 @@
         <p>　音楽である『Music』　×　音楽記号である『con』</p>
         <p>　『con』はイタリア語で"～と共に"という意味になる。</p>
         <p>　この2つをかけ合わせ「音楽と共に」というコンセプトを重視しています。</p>
+        <h1 class="info">Working with us</h1>
+        <p>　MusiConはあなたと共に働きます。
+        <a href="${pageContext.request.contextPath}/jsp/recruit.jsp" class="work-btn">共に働く</a></p>
       </div>
     </div>
 </main>
