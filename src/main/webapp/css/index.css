@@ -221,4 +221,10 @@ body {
 	transition: height 0.4s ease;
 }
 
+.final {
+	width: 20vw;  /* 右側のコンテンツも画面全体を使う */
+	max-width: none;  /* 幅制限を無くす */
+	font-size: 20px;
+	line-height: 1.8;
+}
 /* 画面サイズ対応なし */

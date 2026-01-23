@@ -3,13 +3,13 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>MUSICON 採用情報</title>
+  <title>MUSICON 企業情報</title>
     <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="<%= request.getContextPath() %>/css/recruit.css">
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/css/companyinfo.css">
 </head>
 <body>
 <canvas id="canvas"></canvas>
@@ -20,7 +20,7 @@
   <img src="${pageContext.request.contextPath}/png/MusiConLogo.png"
 		class="icon" width="80" alt="ロゴアイコン">
     <div class="logo">MUSICON Co.</div>
-    <div class="sub">採用情報</div>
+    <div class="sub">企業情報</div>
   </header>
 
   <!-- hero -->
