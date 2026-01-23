@@ -243,6 +243,21 @@ if (title && titleText) {
   }
 }
 
+/* アーティスト名アニメーション */
+const artist = document.querySelector(".artist");
+const artistText = document.querySelector(".artist-text");
 
+if (artist && artistText) {
+  const overflow = artistText.scrollWidth - artist.clientWidth;
+
+  if (overflow > 0) {
+    const speed = 70; // 70px/秒（ここを調整すると速さが変わる。数字大きいと速い）
+    const duration = overflow / speed;
+
+    artistText.classList.add("marquee");
+    artistText.style.setProperty("--overflow", `${overflow}px`);
+    artistText.style.animationDuration = `${duration}s`;
+  }
+}
 
 

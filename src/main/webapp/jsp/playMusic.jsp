@@ -75,8 +75,12 @@ if (musicUrl != null) {
 <div id="player-container">
     <div class="album-art"></div>
     <div class="info">
+    
+		<!-- タイトル -->
         <h2 class="title"><span class="title-text"><%=music.getTitle()%></span></h2>
-        <p class="artist"><%=music.getArtist()%></p>
+        
+        <!-- アーティスト名 -->
+        <p class="artist"><span class="artist-text"><%=music.getArtist()%></span></p>
 
         <audio id="audio" preload="metadata">
             <source src="<%=musicUrl%>" type="audio/mpeg">

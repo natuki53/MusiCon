@@ -142,7 +142,7 @@ body.narrow #player-container .album-art {
 
 /* タイトルの表示枠を固定 */
 .title {
-  max-width: 300px;        /* ← ここがポイント */
+  max-width: 300px;        /* ← ここポイント */
   margin: 0 auto;          /* 中央配置（位置は変わらない） */
   overflow: hidden;
   white-space: nowrap;
@@ -161,10 +161,10 @@ body.narrow #player-container .album-art {
   0% {
     transform: translateX(0);  /* 頭文字が表示される */
   }
-  5% {
+  10% {
     transform: translateX(0);  /* 少し停止0%～3%で調整 3%部分増やしたら長くなる*/
   }
-  95% {
+  93% {
     transform: translateX(calc(-1 * var(--overflow))); /* 右→左へ移動 */
   }
   100% {
@@ -189,9 +189,41 @@ body.narrow #player-container .center-block button {
 
 /* ▼ アーティスト名スタイル */
 .artist {
+  max-width: 300px;        /* ← ここポイント */
   margin: 3px 0 20px; /* 上6px、下20pxのマージン */
-  font-size: clamp(1rem, 3vw, 1.95rem);/* フォントサイズ (最小値,可変値,最大値)*/
+  overflow: hidden;
+  font-size: clamp(1rem, 3vw, 1.5rem);/* フォントサイズ (最小値,可変値,最大値)*/
   opacity: 0.7; /* 少し透明に */
+  text-align: left;
+}
+
+/* 動く文字 */
+.artist-text {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* 右→左に流れる */
+@keyframes artist-marquee-rl {
+  0% {
+    transform: translateX(0);  /* 頭文字が表示される */
+  }
+  10% {
+    transform: translateX(0);  /* 少し停止0%～3%で調整 3%部分増やしたら長くなる*/
+  }
+  93% {
+    transform: translateX(calc(-1 * var(--overflow))); /* 右→左へ移動 */
+  }
+  100% {
+    transform: translateX(calc(-1 * var(--overflow)));
+  }
+}
+
+/*長いときのみ*/
+.artist-text.marquee {
+  animation-name: title-marquee-rl;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }
 
 
