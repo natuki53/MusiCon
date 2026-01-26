@@ -231,7 +231,7 @@ window.addEventListener("DOMContentLoaded", () => {
       speed: 70,         // px/秒
       minDuration: 4,    // 最低4秒
       maxDuration: 12,   // 最大12秒
-      pauseRate: 0.1     // 停止時間比率（アニメ全体の10%停止）
+      pauseRate: 0.2     // 停止時間比率（アニメ全体の10%停止）
     });
   }
 
@@ -240,10 +240,10 @@ window.addEventListener("DOMContentLoaded", () => {
   const artistText = document.querySelector(".artist-text");
   if (artist && artistText) {
     applyMarquee(artist, artistText, {
-      speed: 70,         // ここを変えれば別速にできる
-      minDuration: 3.5,
-      maxDuration: 10,
-      pauseRate: 0.12
+      speed: 70,         // px/秒
+      minDuration: 4,	 // 最低4秒
+      maxDuration: 12,	 // 最大12秒
+      pauseRate: 0.2 	 // 停止時間比率（アニメ全体の10%停止）
     });
   }
 });
