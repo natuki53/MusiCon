@@ -107,6 +107,19 @@ body {
 	text-decoration: none;
 }
 
+.work-btn {
+	background: #fff;
+	color: #000;
+	border: none;
+	border-radius: 99px;
+	padding: 14px 40px;
+	size: 20px;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	text-decoration: none;
+}
+
 .first-link {
 	display: block;
 	margin-top: 16px;
@@ -208,4 +221,10 @@ body {
 	transition: height 0.4s ease;
 }
 
+.final {
+	width: 20vw;  /* 右側のコンテンツも画面全体を使う */
+	max-width: none;  /* 幅制限を無くす */
+	font-size: 20px;
+	line-height: 1.8;
+}
 /* 画面サイズ対応なし */

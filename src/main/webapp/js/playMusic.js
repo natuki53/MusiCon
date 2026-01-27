@@ -223,41 +223,57 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
 
+  /* タイトルアニメーション */
+  const title = document.querySelector(".title");
+  const titleText = document.querySelector(".title-text");
+  if (title && titleText) {
+    applyMarquee(title, titleText, {
+      speed: 70,         // px/秒
+      minDuration: 4,    // 最低4秒
+      maxDuration: 12,   // 最大12秒
+      pauseRate: 0.2     // 停止時間比率（アニメ全体の10%停止）
+    });
+  }
+
+  /* アーティスト名アニメーション */
+  const artist = document.querySelector(".artist");
+  const artistText = document.querySelector(".artist-text");
+  if (artist && artistText) {
+    applyMarquee(artist, artistText, {
+      speed: 70,         // px/秒
+      minDuration: 4,	 // 最低4秒
+      maxDuration: 12,	 // 最大12秒
+      pauseRate: 0.2 	 // 停止時間比率（アニメ全体の10%停止）
+    });
+  }
 });
+  
+/* 汎用マルキュー関数 */
+function applyMarquee(container, text, options) {
+  const overflow = text.scrollWidth - container.clientWidth;
 
+  // 短い場合は適用しない（ここは固定）
+  if (overflow <= 0) return;
 
-/* タイトルアニメーション */
-const title = document.querySelector(".title");
-const titleText = document.querySelector(".title-text");
+  const speed = options.speed ?? 70;
+  let duration = overflow / speed;
 
-if (title && titleText) {
-  const overflow = titleText.scrollWidth - title.clientWidth;
+  const minDuration = options.minDuration ?? 4;
+  const maxDuration = options.maxDuration ?? 12;
+  duration = Math.max(minDuration, Math.min(maxDuration, duration));
 
-  if (overflow > 0) {
-    const speed = 70; // 70px/秒（ここを調整すると速さが変わる。数字大きいと速い）
-    const duration = overflow / speed;
+  // ここで「停止時間」を追加したい場合は pauseRate を使う
+  // 例：pauseRate=0.1 => 10%停止、90%移動
+  const pauseRate = options.pauseRate ?? 0.1;
+  const moveRate = 1 - pauseRate;
 
-    titleText.classList.add("marquee");
-    titleText.style.setProperty("--overflow", `${overflow}px`);
-    titleText.style.animationDuration = `${duration}s`;
-  }
+  // CSS変数に渡す
+  text.classList.add("marquee");
+  text.style.setProperty("--overflow", `${overflow}px`);
+  text.style.setProperty("--duration", `${duration}s`);
+  text.style.setProperty("--pauseRate", `${pauseRate}`);
+  text.style.setProperty("--moveRate", `${moveRate}`);
 }
 
-/* アーティスト名アニメーション */
-const artist = document.querySelector(".artist");
-const artistText = document.querySelector(".artist-text");
-
-if (artist && artistText) {
-  const overflow = artistText.scrollWidth - artist.clientWidth;
-
-  if (overflow > 0) {
-    const speed = 70; // 70px/秒（ここを調整すると速さが変わる。数字大きいと速い）
-    const duration = overflow / speed;
-
-    artistText.classList.add("marquee");
-    artistText.style.setProperty("--overflow", `${overflow}px`);
-    artistText.style.animationDuration = `${duration}s`;
-  }
-}
 
 

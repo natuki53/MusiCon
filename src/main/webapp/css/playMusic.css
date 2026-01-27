@@ -175,6 +175,7 @@ body.narrow #player-container .album-art {
 /*長いときのみ*/
 .title-text.marquee {
   animation-name: title-marquee-rl;
+  animation-duration: var(--duration);
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
@@ -221,7 +222,8 @@ body.narrow #player-container .center-block button {
 
 /*長いときのみ*/
 .artist-text.marquee {
-  animation-name: title-marquee-rl;
+  animation-name: artist-marquee-rl;
+  animation-duration: var(--duration);
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
