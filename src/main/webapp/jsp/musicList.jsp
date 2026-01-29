@@ -64,6 +64,9 @@ if(userName == null){
 				class="menu delete">Delete account / アカウント削除</a></li>
 		</ul>
 	</nav>
+	
+	<form method="get" action="/s" data-slider-id="p_36/range-slider" 
+	data-slider-props="{"lowerBoundParamName":"low-price","upperBoundParamName":"high-price":"stepValues":[  any things  ]
 
 	<!-- ▼ オーバーレイクリックで閉じるスクリプト -->
 	<script>
