@@ -18,30 +18,46 @@ import service.PlayMusicService;
 public class MusicList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
 
-		// ログインチェック
-		HttpSession session = request.getSession();
-		String userName = (String) session.getAttribute("user_name");
-		if (userName == null) {
-			response.sendRedirect(request.getContextPath() + "/jsp/login.jsp");
-			return;
-		}
+    HttpSession session = request.getSession();
+    String userName = (String) session.getAttribute("user_name");
+    if (userName == null) {
+        response.sendRedirect(request.getContextPath() + "/jsp/login.jsp");
+        return;
+    }
 
-		// 一覧（ID順）を取得
-		PlayMusicService service = new PlayMusicService();
-		List<Music> musicList = service.getMusicListByIdOrder();
+    // パラメータ取得
+    String minYearStr = request.getParameter("minYear");
+    String maxYearStr = request.getParameter("maxYear");
+    String genre = request.getParameter("genre");
+    String mode = request.getParameter("mode");
 
-		// JSPへ渡す（request scope）
-		request.setAttribute("musicList", musicList);
+    PlayMusicService service = new PlayMusicService();
+    List<Music> musicList;
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/musicList.jsp");
-		dispatcher.forward(request, response);
-	}
+    if (minYearStr != null && maxYearStr != null) {
+        int minYear = Integer.parseInt(minYearStr);
+        int maxYear = Integer.parseInt(maxYearStr);
+        musicList = service.searchByYearAndGenre(minYear, maxYear, genre);
+    } else {
+        musicList = service.getMusicListByIdOrder();
+    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
-	}
+    request.setAttribute("musicList", musicList);
+
+    if ("ajax".equals(request.getParameter("mode"))) {
+        RequestDispatcher rd =
+            request.getRequestDispatcher("/jsp/musicList.jsp");
+        rd.forward(request, response);
+        return;
+    }
+
+
+    // 通常表示
+    RequestDispatcher dispatcher =
+        request.getRequestDispatcher("/jsp/musicList.jsp");
+    dispatcher.forward(request, response);
+}
 }

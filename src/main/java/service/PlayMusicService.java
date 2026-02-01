@@ -71,4 +71,18 @@ public class PlayMusicService {
 	public boolean likeMusic(int id) {
 		return dao.likeMusic(id);
 	}
+	
+	public List<Music> searchByYearAndGenre(int minYear, int maxYear, String genre) {
+
+	    MusicDAO dao = new MusicDAO();
+
+	    // genre が「すべて」の場合
+	    if (genre == null || genre.equals("すべて")) {
+	        return dao.searchByYear(minYear, maxYear);
+	    }
+
+	    return dao.searchByYearAndGenre(minYear, maxYear, genre);
+	}
+
+
 }

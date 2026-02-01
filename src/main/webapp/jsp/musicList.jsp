@@ -2,8 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="model.Music"%>
-<% String userName = (String) session.getAttribute("user_name");
-if(userName == null){
+<%
+String userName = (String) session.getAttribute("user_name");
+if (userName == null) {
 	response.sendRedirect(request.getContextPath() + "/index.jsp");
 	return;
 }
@@ -38,10 +39,10 @@ if(userName == null){
 	<div class="overlay"></div>
 	<%-- メニュー --%>
 	<nav class="side-menu">
-	<ul class="user-profile">
-		<img src="${pageContext.request.contextPath}/png/musi_usericon.png"
-						class="useri" width="36" alt="ユーザーアイコン">
-		<li><%=userName%>さん</li>
+		<ul class="user-profile">
+			<img src="${pageContext.request.contextPath}/png/musi_usericon.png"
+				class="useri" width="36" alt="ユーザーアイコン">
+			<li><%=userName%>さん</li>
 		</ul>
 		<ul class="menu-list">
 			<li><a href="${pageContext.request.contextPath}/PlayMusic"
@@ -64,9 +65,37 @@ if(userName == null){
 				class="menu delete">Delete account / アカウント削除</a></li>
 		</ul>
 	</nav>
-	
-	<form method="get" action="/s" data-slider-id="p_36/range-slider" 
-	data-slider-props="{"lowerBoundParamName":"low-price","upperBoundParamName":"high-price":"stepValues":[  any things  ]
+
+	<!-- 🔍 左サイドバー -->
+	<aside class="sidebar">
+		<h2>絞り込み</h2>
+
+		<h3>リリース年代</h3>
+		<div class="year-label">
+			<span id="minYearLabel">1990</span> 〜 <span id="maxYearLabel">2026</span>
+		</div>
+		<div class="range-wrapper">
+			<div class="range-track"></div>
+			<div class="range-selected" id="rangeSelected"></div>
+			<input type="range" id="minYear" min="1900" max="2026" value="1900">
+			<input type="range" id="maxYear" min="1900" max="2026" value="2026">
+		</div>
+		</div>
+		<!-- ジャンル -->
+		<div class="filter-box">
+			<h3>ジャンル</h3>
+			<select id="genre">
+				<option value="">すべて</option>
+				<option value="POP">POP</option>
+				<option value="ROCK">ROCK</option>
+				<option value="JAZZ">JAZZ</option>
+				<option value="HIPHOP">HIPHOP</option>
+			</select>
+		</div>
+		<button type="button" class="search-btn" onclick="searchMusic()">検索</button>
+	</aside>
+
+
 
 	<!-- ▼ オーバーレイクリックで閉じるスクリプト -->
 	<script>
@@ -76,41 +105,41 @@ if(userName == null){
 </script>
 	<h1 class="page-title">楽曲一覧</h1>
 	<div class="container">
-	<%
-	List<Music> list = (List<Music>) request.getAttribute("musicList");
-	if (list == null || list.isEmpty()) {
-	%>
-	<p class="empty">曲がありません</p>
-	<%
-	} else {
-	%>
-		<%
-		for (Music m : list) {
-			String playLink;
-			if (m.getUrl() != null && !m.getUrl().isEmpty()) {
-				playLink = pageContext.getRequest().getServletContext().getContextPath()
-						+ "/PlayMusic?url=" + java.net.URLEncoder.encode(m.getUrl(), "UTF-8");
+		<div id="musicList">
+			<%
+			List<Music> list = (List<Music>) request.getAttribute("musicList");
+			if (list == null || list.isEmpty()) {
+			%>
+			<p class="empty">曲がありません</p>
+			<%
 			} else {
-				playLink = pageContext.getRequest().getServletContext().getContextPath()
-						+ "/PlayMusic?id=" + m.getId();
+			%>
+			<%
+			for (Music m : list) {
+				String playLink;
+				if (m.getUrl() != null && !m.getUrl().isEmpty()) {
+					playLink = pageContext.getRequest().getServletContext().getContextPath() + "/PlayMusic?url="
+					+ java.net.URLEncoder.encode(m.getUrl(), "UTF-8");
+				} else {
+					playLink = pageContext.getRequest().getServletContext().getContextPath() + "/PlayMusic?id=" + m.getId();
+				}
+			%>
+
+			<a href="<%=playLink%>" class="music-area btn-flat">
+				<div class="title">
+					タイトル：<%=m.getTitle()%></div>
+				<div class="artist">
+					アーティスト：<%=m.getArtist()%></div>
+				<div class="time">
+					再生時間：<%=m.getMusicTime() / 100%>:<%=String.format("%02d", m.getMusicTime() % 100)%></div>
+				<div class="like">
+					いいね：<%=m.getLikes()%></div>
+			</a>
+
+			<%
 			}
-		%>
-
-		<a href="<%=playLink%>" class="music-area btn-flat">
-			<div class="title">
-				タイトル：<%=m.getTitle()%></div>
-			<div class="artist">
-				アーティスト：<%=m.getArtist()%></div>
-			<div class="time">
-				再生時間：<%=m.getMusicTime() / 100%>:<%=String.format("%02d", m.getMusicTime() % 100)%></div>
-			<div class="like">
-				いいね：<%=m.getLikes()%></div>
-		</a>
-
-		<%
-		}
-		%>
-
+			%>
+		</div>
 	</div>
 	<%
 	}
@@ -228,5 +257,9 @@ if(userName == null){
 			}
 
 			window.requestAnimationFrame(changeCanvas);</script>
+	<script>
+  const contextPath = "${pageContext.request.contextPath}";
+</script>
+	<script src="${pageContext.request.contextPath}/js/musicList.js"></script>
 </body>
 </html>

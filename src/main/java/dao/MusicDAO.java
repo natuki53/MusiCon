@@ -317,4 +317,55 @@ public class MusicDAO {
 		}
 		return null;
 	}
+	
+	//musicList内の検索用
+	
+	private List<Music> executeSearch(String sql, Object... params) {
+	    List<Music> list = new ArrayList<>();
+
+	    try (Connection con = DatabaseConnection.getConnection();
+	         PreparedStatement ps = con.prepareStatement(sql)) {
+
+	        for (int i = 0; i < params.length; i++) {
+	            ps.setObject(i + 1, params[i]);
+	        }
+
+	        ResultSet rs = ps.executeQuery();
+	        while (rs.next()) {
+	            Music m = new Music();
+	            m.setId(rs.getInt("id"));
+	            m.setTitle(rs.getString("title"));
+	            m.setArtist(rs.getString("artist"));
+	            m.setReleaseY(rs.getInt("release_year"));
+	            m.setGenre(rs.getString("genre"));
+	            list.add(m);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return list;
+	}
+
+	public List<Music> searchByYear(int minYear, int maxYear) {
+	    String sql = """
+	        SELECT * FROM music
+	        WHERE release_year BETWEEN ? AND ?
+	        ORDER BY id DESC
+	    """;
+
+	    return executeSearch(sql, minYear, maxYear);
+	}
+
+	public List<Music> searchByYearAndGenre(int minYear, int maxYear, String genre) {
+	    String sql = """
+	        SELECT * FROM music
+	        WHERE release_year BETWEEN ? AND ?
+	          AND genre = ?
+	        ORDER BY id DESC
+	    """;
+
+	    return executeSearch(sql, minYear, maxYear, genre);
+	}
+
 }

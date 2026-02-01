@@ -76,7 +76,6 @@ body {
 	min-width: 400px;  /* 最小幅を600pxに設定 */
 	text-decoration: none; /* 下線を消す */
 	height: 40px;  /* 固定の高さ */
-	z-index: 1500; /* 他の要素よりも前面に表示 */
 	margin-bottom: 5px; /* ボタン同士の間にスペースを作る */
 	transition: all 0.3s ease; /* スムーズなトランジション */
 	display: flex;
@@ -397,7 +396,126 @@ body {
 	-webkit-backdrop-filter: blur(25px); /* Safari対策 */
 	border-radius: 10px;  /* 角を丸くする */
 }
-		  
+
+/*ここからが左側のフィルター検索*/
+/* 左サイドバー */
+.sidebar {
+  width: 260px;
+  padding: 20px;
+  margin-right: 20px;
+  margin-top: 200px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 18px;
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+.sidebar h2 {
+  margin-top: 0;
+}
+
+.range-wrapper {
+  position: relative;
+  height: 40px;
+}
+
+/* ベースのバー */
+.range-track {
+  position: absolute;
+  top: 18px;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: #ddd;
+  border-radius: 3px;
+}
+
+/* 選択中の範囲 */
+.range-selected {
+  position: absolute;
+  top: 18px;
+  height: 6px;
+  background: #6fcf97;
+  border-radius: 3px;
+}
+
+/* range本体（透明） */
+.range-wrapper input[type="range"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: none;
+  pointer-events: none;
+  -webkit-appearance: none;
+}
+
+/* ●（つまみ） */
+.range-wrapper input[type="range"]::-webkit-slider-thumb {
+  pointer-events: auto;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #2ecc71;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.range-wrapper input[type="range"]::-moz-range-thumb {
+  pointer-events: auto;
+  width: 16px;
+  height: 16px;
+  background: #2ecc71;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+.filter-box {
+  margin-bottom: 25px;
+}
+
+.filter-box h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.year-label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input[type="range"] {
+  width: 100%;
+  margin: 5px 0;
+}
+
+select {
+  width: 100%;
+  padding: 6px;
+  border-radius: 6px;
+}
+
+.search-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  background: #7b4fe4;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  opacity: 0.85;
+}
+  
+/*ここまでが左側のフィルター検索*/
+
 canvas {
 	position: fixed;
 	inset: 0;
