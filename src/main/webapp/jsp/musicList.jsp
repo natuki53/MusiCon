@@ -86,7 +86,7 @@ if (userName == null) {
 			<!-- ジャンル -->
 			<div class="filter-box">
 				<h3>ジャンル</h3>
-				<select id="genre">
+				<select id="genre" name="genre">
 					<option value="">すべて</option>
 					<option value="JPOP">J-POP</option>
 					<option value="KPOP">K-POP</option>
