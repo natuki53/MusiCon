@@ -83,8 +83,11 @@ public class ImportMusic extends HttpServlet {
 				if (ry != null && !ry.isEmpty()) releaseY = Integer.parseInt(ry.trim());
 			} catch (NumberFormatException ignored) {}
 			try {
+				System.out.println("１アップロード時の時間は");
 				String mt = request.getParameter("music_time");
+				System.out.println("２アップロード時の時間は"+mt);
 				if (mt != null && !mt.isEmpty()) musicTime = Integer.parseInt(mt.trim());
+				System.out.println("３アップロード時の時間は"+mt);
 			} catch (NumberFormatException ignored) {}
 
 			if (title != null && !title.isEmpty() && artist != null && !artist.isEmpty()

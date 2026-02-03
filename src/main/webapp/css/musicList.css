@@ -499,7 +499,7 @@ select {
   border-radius: 6px;
 }
 
-.search-btn {
+.filter-button {
   width: 100%;
   padding: 10px;
   border: none;
@@ -510,7 +510,7 @@ select {
   cursor: pointer;
 }
 
-.search-btn:hover {
+.filter-button:hover {
   opacity: 0.85;
 }
   

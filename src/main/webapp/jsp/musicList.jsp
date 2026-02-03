@@ -21,6 +21,7 @@ if (userName == null) {
 </head>
 <body>
 	<canvas id="canvas"></canvas>
+	<h1 class="page-title">楽曲一覧</h1>
 	<div class="reverse">
 		<a href="${pageContext.request.contextPath}/PlayMusic"> <img
 			src="${pageContext.request.contextPath}/png/MusiConLogo.png"
@@ -67,34 +68,42 @@ if (userName == null) {
 	</nav>
 
 	<!-- 🔍 左サイドバー -->
-	<aside class="sidebar">
-		<h2>絞り込み</h2>
+	<div class="sidebar">
+		<form action="${pageContext.request.contextPath}/MusicList" method="post">
+			<h2>絞り込み</h2>
 
-		<h3>リリース年代</h3>
-		<div class="year-label">
-			<span id="minYearLabel">1990</span> 〜 <span id="maxYearLabel">2026</span>
-		</div>
-		<div class="range-wrapper">
-			<div class="range-track"></div>
-			<div class="range-selected" id="rangeSelected"></div>
-			<input type="range" id="minYear" min="1900" max="2026" value="1900">
-			<input type="range" id="maxYear" min="1900" max="2026" value="2026">
-		</div>
-		</div>
-		<!-- ジャンル -->
-		<div class="filter-box">
-			<h3>ジャンル</h3>
-			<select id="genre">
-				<option value="">すべて</option>
-				<option value="POP">POP</option>
-				<option value="ROCK">ROCK</option>
-				<option value="JAZZ">JAZZ</option>
-				<option value="HIPHOP">HIPHOP</option>
-			</select>
-		</div>
-		<button type="button" class="search-btn" onclick="searchMusic()">検索</button>
-	</aside>
+			<h3>リリース年代</h3>
+			<div class="year-label">
+				<span id="minYearLabel">1990</span> 〜 <span id="maxYearLabel">2026</span>
+			</div>
+			<div class="range-wrapper">
+				<div class="range-track"></div>
+				<div class="range-selected" id="rangeSelected"></div>
+				<input type="range" id="minYear" name="minYear" min="1900" max="2026" value="1900">
+				<input type="range" id="maxYear" name="maxYear" min="1900" max="2026" value="2026">
+			</div>
 
+			<!-- ジャンル -->
+			<div class="filter-box">
+				<h3>ジャンル</h3>
+				<select id="genre">
+					<option value="">すべて</option>
+					<option value="JPOP">J-POP</option>
+					<option value="KPOP">K-POP</option>
+					<option value="HPOP">HIPHOP</option>
+					<option value="CLSC">クラシック</option>
+					<option value="ROCK">ロック</option>
+					<option value="JAZZ">ジャズ</option>
+					<option value="RYBL">R&B</option>
+					<option value="EDMS">EDM</option>
+					<option value="ENKA">演歌</option>
+					<option value="OTHR">その他</option>
+				</select>
+			</div>
+			<button type="submit" class="filter-button">検索</button>
+		</form>
+	</div>
+	</div>
 
 
 	<!-- ▼ オーバーレイクリックで閉じるスクリプト -->
@@ -103,7 +112,6 @@ if (userName == null) {
         document.getElementById("menu-check").checked = false;
     });
 </script>
-	<h1 class="page-title">楽曲一覧</h1>
 	<div class="container">
 		<div id="musicList">
 			<%
@@ -127,11 +135,11 @@ if (userName == null) {
 
 			<a href="<%=playLink%>" class="music-area btn-flat">
 				<div class="title">
-					タイトル：<%=m.getTitle()%></div>
+					<%=m.getTitle()%></div>
 				<div class="artist">
-					アーティスト：<%=m.getArtist()%></div>
+					<%=m.getArtist()%></div>
 				<div class="time">
-					再生時間：<%=m.getMusicTime() / 100%>:<%=String.format("%02d", m.getMusicTime() % 100)%></div>
+					再生時間：<%=m.getMusicTime() / 60%>:<%=String.format("%02d", m.getMusicTime() % 60)%></div>
 				<div class="like">
 					いいね：<%=m.getLikes()%></div>
 			</a>

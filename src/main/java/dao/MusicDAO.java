@@ -336,7 +336,7 @@ public class MusicDAO {
 	            m.setId(rs.getInt("id"));
 	            m.setTitle(rs.getString("title"));
 	            m.setArtist(rs.getString("artist"));
-	            m.setReleaseY(rs.getInt("release_year"));
+	            m.setReleaseY(rs.getInt("release_y"));
 	            m.setGenre(rs.getString("genre"));
 	            list.add(m);
 	        }
@@ -350,7 +350,7 @@ public class MusicDAO {
 	public List<Music> searchByYear(int minYear, int maxYear) {
 	    String sql = """
 	        SELECT * FROM music
-	        WHERE release_year BETWEEN ? AND ?
+	        WHERE release_y BETWEEN ? AND ?
 	        ORDER BY id DESC
 	    """;
 
@@ -360,7 +360,7 @@ public class MusicDAO {
 	public List<Music> searchByYearAndGenre(int minYear, int maxYear, String genre) {
 	    String sql = """
 	        SELECT * FROM music
-	        WHERE release_year BETWEEN ? AND ?
+	        WHERE release_y BETWEEN ? AND ?
 	          AND genre = ?
 	        ORDER BY id DESC
 	    """;

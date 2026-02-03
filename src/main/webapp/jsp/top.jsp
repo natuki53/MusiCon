@@ -85,7 +85,7 @@ session.setAttribute("musicList", musicList);
 						<div class="title"><%=m.getTitle()%></div>
 					</div>
 					<div class="artist"><%=m.getArtist()%></div>
-					<div class="time"><%=m.getMusicTime() / 100%>:<%=String.format("%02d", m.getMusicTime() % 100)%></div>
+					<div class="time"><%=m.getMusicTime() / 60%>:<%=String.format("%02d", m.getMusicTime() % 60)%></div>
 				</a>
 				<br>
 				<%

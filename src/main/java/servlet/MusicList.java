@@ -3,7 +3,6 @@ package servlet;
 import java.io.IOException;
 import java.util.List;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,46 +17,58 @@ import service.PlayMusicService;
 public class MusicList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		System.out.println("ミュージックリストPost");
+		HttpSession session = request.getSession();
+		if (session.getAttribute("user_name") == null) {
+			response.sendRedirect(request.getContextPath() + "/index.jsp");
+			return;
+		}
 
-    HttpSession session = request.getSession();
-    String userName = (String) session.getAttribute("user_name");
-    if (userName == null) {
-        response.sendRedirect(request.getContextPath() + "/jsp/login.jsp");
-        return;
-    }
+		PlayMusicService service = new PlayMusicService();
+		List<Music> musicList = service.getMusicListByIdOrder();
 
-    // パラメータ取得
-    String minYearStr = request.getParameter("minYear");
-    String maxYearStr = request.getParameter("maxYear");
-    String genre = request.getParameter("genre");
-    String mode = request.getParameter("mode");
+		request.setAttribute("musicList", musicList);
+		request.getRequestDispatcher("/jsp/musicList.jsp")
+		.forward(request, response);
+	}
 
-    PlayMusicService service = new PlayMusicService();
-    List<Music> musicList;
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String userName = (String) session.getAttribute("user_name");
+		if (userName == null) {
+			response.sendRedirect(request.getContextPath() + "/jsp/login.jsp");
+			return;
+		}
 
-    if (minYearStr != null && maxYearStr != null) {
-        int minYear = Integer.parseInt(minYearStr);
-        int maxYear = Integer.parseInt(maxYearStr);
-        musicList = service.searchByYearAndGenre(minYear, maxYear, genre);
-    } else {
-        musicList = service.getMusicListByIdOrder();
-    }
+		// パラメータ取得
+		String minYearStr = request.getParameter("minYear");
+		String maxYearStr = request.getParameter("maxYear");
+		String genre = request.getParameter("genre");
 
-    request.setAttribute("musicList", musicList);
+		System.out.println("更新したよ1"+minYearStr);
+		System.out.println("更新したよ2"+maxYearStr);
+		System.out.println("更新したよ3"+genre);
+		System.out.println("更新したよ3");
 
-    if ("ajax".equals(request.getParameter("mode"))) {
-        RequestDispatcher rd =
-            request.getRequestDispatcher("/jsp/musicList.jsp");
-        rd.forward(request, response);
-        return;
-    }
+		PlayMusicService service = new PlayMusicService();
+		List<Music> musicList;
 
+		if (minYearStr != null && maxYearStr != null) {
+			int minYear = Integer.parseInt(minYearStr);
+			int maxYear = Integer.parseInt(maxYearStr);
+			musicList = service.searchByYearAndGenre(minYear, maxYear, genre);
+		} else {
+			musicList = service.getMusicListByIdOrder();
+		}
 
-    // 通常表示
-    RequestDispatcher dispatcher =
-        request.getRequestDispatcher("/jsp/musicList.jsp");
-    dispatcher.forward(request, response);
-}
+		request.setAttribute("musicList", musicList);
+
+		// 通常表示
+		request.getRequestDispatcher("/jsp/musicList.jsp")
+		.forward(request, response);
+	}
 }
