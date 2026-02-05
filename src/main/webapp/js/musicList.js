@@ -9,16 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const min = parseInt(minYear.min);
   const max = parseInt(maxYear.max);
 
-  function updateRange() {
-    let minVal = parseInt(minYear.value);
-    let maxVal = parseInt(maxYear.value);
-
-    // 交差防止
-    if (minVal > maxVal) {
-      minYear.value = maxVal;
-      minVal = maxVal;
-    }
-
+  function updateUI(minVal, maxVal) {
     minLabel.textContent = minVal;
     maxLabel.textContent = maxVal;
 
@@ -29,12 +20,40 @@ document.addEventListener("DOMContentLoaded", () => {
     rangeSelected.style.width = (right - left) + "%";
   }
 
-  minYear.addEventListener("input", updateRange);
-  maxYear.addEventListener("input", updateRange);
+  // ▼ min を動かしたとき
+  minYear.addEventListener("input", () => {
+    const minVal = parseInt(minYear.value);
+    const maxVal = parseInt(maxYear.value);
 
-  // ★ 初期表示（これが無いと数字が動かない）
-  updateRange();
+    if (minVal > maxVal) {
+      // 超えたら止める（相手は動かさない）
+      minYear.value = maxVal;
+      updateUI(maxVal, maxVal);
+      return;
+    }
+
+    updateUI(minVal, maxVal);
+  });
+
+  // ▼ max を動かしたとき
+  maxYear.addEventListener("input", () => {
+    const minVal = parseInt(minYear.value);
+    const maxVal = parseInt(maxYear.value);
+
+    if (maxVal < minVal) {
+      // 超えたら止める（相手は動かさない）
+      maxYear.value = minVal;
+      updateUI(minVal, minVal);
+      return;
+    }
+
+    updateUI(minVal, maxVal);
+  });
+
+  // 初期表示
+  updateUI(parseInt(minYear.value), parseInt(maxYear.value));
 });
+
 
 function searchMusic() {
   const min = document.getElementById("minYear").value;

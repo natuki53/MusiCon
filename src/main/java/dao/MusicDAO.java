@@ -353,6 +353,7 @@ public class MusicDAO {
 	        WHERE release_y BETWEEN ? AND ?
 	        ORDER BY id DESC
 	    """;
+	    System.out.println(sql);
 
 	    return executeSearch(sql, minYear, maxYear);
 	}
