@@ -79,8 +79,8 @@ if (userName == null) {
 			<div class="range-wrapper">
 				<div class="range-track"></div>
 				<div class="range-selected" id="rangeSelected"></div>
-				<input type="range" id="minYear" name="minYear" min="1900" max="2026" value="1900">
-				<input type="range" id="maxYear" name="maxYear" min="1900" max="2026" value="2026">
+				<input type="range" id="minYear" name="minYear" step="1" min="1950" max="2026" value="1900">
+				<input type="range" id="maxYear" name="maxYear" step="1" min="1950" max="2026" value="2026">
 			</div>
 
 			<!-- ジャンル -->
