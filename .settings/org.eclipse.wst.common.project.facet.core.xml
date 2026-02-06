@@ -2,6 +2,7 @@
 <faceted-project>
   <runtime name="Tomcat10 (Java21)"/>
   <secondary-runtime name="Apache Tomcat v10.1"/>
+  <secondary-runtime name="Apache Tomcat v10.1 (2)"/>
   <fixed facet="java"/>
   <fixed facet="wst.jsdt.web"/>
   <fixed facet="jst.web"/>

@@ -330,7 +330,7 @@ public class MusicDAO {
 	        for (int i = 0; i < params.length; i++) {
 	            ps.setObject(i + 1, params[i]);
 	        }
-
+	        System.out.println(ps);
 	        ResultSet rs = ps.executeQuery();
 	        while (rs.next()) {
 	            Music m = new Music();
@@ -340,7 +340,6 @@ public class MusicDAO {
 	            m.setReleaseY(rs.getInt("release_y"));
 	            m.setGenre(rs.getString("genre"));
 	            list.add(m);
-	        }
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    }
@@ -352,7 +351,6 @@ public class MusicDAO {
 	    String sql =
 	        "SELECT * FROM musics WHERE release_y BETWEEN ? AND ? ORDER BY id DESC"
 	    ;
-	    System.out.println(sql);
 
 	    return executeSearch(sql, minYear, maxYear);
 	}
@@ -361,7 +359,6 @@ public class MusicDAO {
 	    String sql = "SELECT * FROM musics WHERE release_y BETWEEN ? AND ? AND genre = ? ORDER BY id DESC"
 
 	    ;
-	    System.out.println(sql);
 	    return executeSearch(sql, minYear, maxYear, genre);
 	}
 
