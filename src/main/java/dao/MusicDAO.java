@@ -340,6 +340,7 @@ public class MusicDAO {
 	            m.setReleaseY(rs.getInt("release_y"));
 	            m.setGenre(rs.getString("genre"));
 	            list.add(m);
+	        }
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    }
