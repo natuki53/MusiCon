@@ -55,13 +55,21 @@ public class MusicList extends HttpServlet {
 		PlayMusicService service = new PlayMusicService();
 		List<Music> musicList;
 
-		if (minYearStr != null && maxYearStr != null) {
-			int minYear = Integer.parseInt(minYearStr);
-			int maxYear = Integer.parseInt(maxYearStr);
-			musicList = service.searchByYearAndGenre(minYear, maxYear, genre);
-		} else {
-			musicList = service.getMusicListByIdOrder();
-		}
+		boolean hasYear =
+			    minYearStr != null && !minYearStr.isEmpty() &&
+			    maxYearStr != null && !maxYearStr.isEmpty();
+
+			boolean hasGenre =
+			    genre != null && !genre.isEmpty();
+
+			if (hasYear || hasGenre) {
+			    int minYear = hasYear ? Integer.parseInt(minYearStr) : 1950;
+			    int maxYear = hasYear ? Integer.parseInt(maxYearStr) : 2026;
+			    musicList = service.searchByYearAndGenre(minYear, maxYear, genre);
+			} else {
+			    musicList = service.getMusicListByIdOrder();
+			}
+
 
 		request.setAttribute("musicList", musicList);
 
