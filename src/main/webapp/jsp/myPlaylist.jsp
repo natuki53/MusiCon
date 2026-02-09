@@ -3,8 +3,9 @@
 <%@ page import="java.util.List"%>
 <%@ page import="model.PlaylistItem"%>
 <%@ page import="model.Music"%>
-<% String userName = (String) session.getAttribute("user_name");
-if(userName == null){
+<%
+String userName = (String) session.getAttribute("user_name");
+if (userName == null) {
 	response.sendRedirect(request.getContextPath() + "/index.jsp");
 	return;
 }
@@ -38,10 +39,10 @@ if(userName == null){
 	<div class="overlay"></div>
 	<%-- メニュー --%>
 	<nav class="side-menu">
-	<ul class="user-profile">
-		<img src="${pageContext.request.contextPath}/png/musi_usericon.png"
-						class="useri" width="36" alt="ユーザーアイコン">
-		<li><%=userName%>さん</li>
+		<ul class="user-profile">
+			<img src="${pageContext.request.contextPath}/png/musi_usericon.png"
+				class="useri" width="36" alt="ユーザーアイコン">
+			<li><%=userName%>さん</li>
 		</ul>
 		<ul class="menu-list">
 			<li><a href="${pageContext.request.contextPath}/PlayMusic"
@@ -72,19 +73,19 @@ if(userName == null){
     });
 </script>
 	<h2 class="mBookmark-title">▶ プレイリスト</h2>
-<ul class="container">
-	<p style="color: green;">
-		<%=request.getAttribute("message") != null ? request.getAttribute("message") : ""%>
-	</p>
+	<ul class="container">
+		<p style="color: green;">
+			<%=request.getAttribute("message") != null ? request.getAttribute("message") : ""%>
+		</p>
 
-	<%
-	List<PlaylistItem> list = (List<PlaylistItem>) session.getAttribute("playlistItems");
-	if (list == null || list.isEmpty()) {
-	%>
-	<p class="NoBookmark">まだプレイリストが空です。</p>
-	<%
-	} else {
-	%>
+		<%
+		List<PlaylistItem> list = (List<PlaylistItem>) session.getAttribute("playlistItems");
+		if (list == null || list.isEmpty()) {
+		%>
+		<p class="NoBookmark">まだプレイリストが空です。</p>
+		<%
+		} else {
+		%>
 		<%
 		for (PlaylistItem item : list) {
 			Music m = item.getMusic();
@@ -92,10 +93,12 @@ if(userName == null){
 		<li><a
 			href="${pageContext.request.contextPath}/PlayMusic?playlistMode=true&pos=<%=item.getPos()%>"
 			class="music-area btn-flat">
+			<div class="marquee">
 				<div class="title">
-					タイトル：<%=m.getTitle()%></div>
+					<%=m.getTitle()%></div>
+					</div>
 				<div class="artist">
-					アーティスト：<%=m.getArtist()%></div>
+					<%=m.getArtist()%></div>
 				<div class="id">
 					順番：<%=item.getPos() + 1%></div>
 		</a>
@@ -105,7 +108,7 @@ if(userName == null){
 				<button type="submit" class="btn-flat"
 					style="background: #f7d358; border: none; cursor: pointer;">
 					★ プレイリストから外す</button>
-			</form> <br> <br></li>
+			</form></li>
 		<hr>
 		<%
 		}
@@ -227,6 +230,47 @@ if(userName == null){
 			}
 
 			window.requestAnimationFrame(changeCanvas);</script>
+	<!-- ▼ 曲タイトルスクロール -->
+	<script>
+	window.addEventListener('DOMContentLoaded', () => {
+	    const marquees = document.querySelectorAll('.marquee');
+
+	    // 枠内判定
+	    marquees.forEach(marquee => {
+	        const title = marquee.querySelector('.title');
+
+	        requestAnimationFrame(() => {
+	            const textWidth = title.scrollWidth;
+	            const boxWidth  = marquee.clientWidth;
+
+	            if(textWidth > boxWidth){
+	                title.dataset.marquee = "true"; // スクロール対象
+	                title.style.textAlign = 'left';
+	            } else {
+	                title.dataset.marquee = "false"; // 枠内に収まる
+	                title.style.textAlign = 'center';
+	            }
+	        });
+	    });
+
+	    // ON/OFF切替（5秒ごと）
+	    let active = false;
+	    setInterval(() => {
+	        active = !active;
+	        marquees.forEach(marquee => {
+	            const title = marquee.querySelector('.title');
+	            if(title.dataset.marquee === "true"){
+	                if(active){
+	                    title.classList.add('is-marquee');
+	                } else {
+	                    title.classList.remove('is-marquee');
+	                    title.style.transform = 'translateX(0)';
+	                }
+	            }
+	        });
+	    }, 5000);
+	});
+	</script>
 </body>
 </html>
 
