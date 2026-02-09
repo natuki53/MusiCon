@@ -54,29 +54,29 @@ document.addEventListener("DOMContentLoaded", () => {
   updateUI(parseInt(minYear.value), parseInt(maxYear.value));
 });
 
-
 function searchMusic() {
   const min = document.getElementById("minYear").value;
   const max = document.getElementById("maxYear").value;
   const genre = document.getElementById("genre").value;
 
-  fetch(`${contextPath}/MusicList?mode=ajax&minYear=${min}&maxYear=${max}&genre=${genre}`)
+  const params = new URLSearchParams();
+  params.append("mode", "ajax");
+  params.append("minYear", min);
+  params.append("maxYear", max);
+  params.append("genre", genre);
+
+  fetch(`${contextPath}/MusicList`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: params.toString()
+  })
     .then(res => res.text())
     .then(html => {
       document.getElementById("musicList").innerHTML = html;
     })
     .catch(err => console.error(err));
 }
-function syncHidden() {
-  document.getElementById("minYearHidden").value =
-    document.getElementById("minYear").value;
-  document.getElementById("maxYearHidden").value =
-    document.getElementById("maxYear").value;
-}
 
-document.getElementById("minYear").addEventListener("input", syncHidden);
-document.getElementById("maxYear").addEventListener("input", syncHidden);
-
-// 初期化
-syncHidden();
 

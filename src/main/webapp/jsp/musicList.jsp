@@ -69,7 +69,8 @@ if (userName == null) {
 
 	<!-- 🔍 左サイドバー -->
 	<div class="sidebar">
-		<form action="${pageContext.request.contextPath}/MusicList" method="post">
+		<form onsubmit="return false;">
+
 			<h2>絞り込み</h2>
 
 			<h3>リリース年代</h3>
@@ -100,9 +101,9 @@ if (userName == null) {
 					<option value="OTHR">その他</option>
 				</select>
 			</div>
-			<button type="submit" class="filter-button">検索</button>
+			<button type="button" class="filter-button" onclick="searchMusic()">検索</button>
+
 		</form>
-	</div>
 	</div>
 
 
@@ -114,44 +115,11 @@ if (userName == null) {
 </script>
 	<div class="container">
 		<div id="musicList">
-			<%
-			List<Music> list = (List<Music>) request.getAttribute("musicList");
-			if (list == null || list.isEmpty()) {
-			%>
-			<p class="empty">曲がありません</p>
-			<%
-			} else {
-			%>
-			<%
-			for (Music m : list) {
-				String playLink;
-				if (m.getUrl() != null && !m.getUrl().isEmpty()) {
-					playLink = pageContext.getRequest().getServletContext().getContextPath() + "/PlayMusic?url="
-					+ java.net.URLEncoder.encode(m.getUrl(), "UTF-8");
-				} else {
-					playLink = pageContext.getRequest().getServletContext().getContextPath() + "/PlayMusic?id=" + m.getId();
-				}
-			%>
-
-			<a href="<%=playLink%>" class="music-area btn-flat">
-				<div class="title">
-					<%=m.getTitle()%></div>
-				<div class="artist">
-					<%=m.getArtist()%></div>
-				<div class="time">
-					再生時間：<%=m.getMusicTime() / 60%>:<%=String.format("%02d", m.getMusicTime() % 60)%></div>
-				<div class="like">
-					いいね：<%=m.getLikes()%></div>
-			</a>
-
-			<%
-			}
-			%>
+			<!-- 曲一覧があった場所 -->
+			<jsp:include page="/jsp/musicListPart.jsp" />
 		</div>
 	</div>
-	<%
-	}
-	%>
+	
 	<script>
 		const rand = function(min, max) {
 			  return Math.random() * ( max - min ) + min;

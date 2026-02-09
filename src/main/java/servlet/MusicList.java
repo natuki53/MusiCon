@@ -18,21 +18,23 @@ public class MusicList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		HttpSession session = request.getSession();
-		if (session.getAttribute("user_name") == null) {
-			response.sendRedirect(request.getContextPath() + "/index.jsp");
-			return;
-		}
+	        throws ServletException, IOException {
 
-		PlayMusicService service = new PlayMusicService();
-		List<Music> musicList = service.getMusicListByIdOrder();
+	    HttpSession session = request.getSession();
+	    if (session.getAttribute("user_name") == null) {
+	        response.sendRedirect(request.getContextPath() + "/index.jsp");
+	        return;
+	    }
 
-		request.setAttribute("musicList", musicList);
-		request.getRequestDispatcher("/jsp/musicList.jsp")
-		.forward(request, response);
+	    PlayMusicService service = new PlayMusicService();
+	    List<Music> musicList = service.getMusicListByIdOrder();
+
+	    request.setAttribute("musicList", musicList);
+	    request.getRequestDispatcher("/jsp/musicListPart.jsp")
+	        .forward(request, response);
 	}
+
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -47,6 +49,8 @@ public class MusicList extends HttpServlet {
 		String minYearStr = request.getParameter("minYear");
 		String maxYearStr = request.getParameter("maxYear");
 		String genre = request.getParameter("genre");
+
+		String mode = request.getParameter("mode");
 
 		System.out.println("MusicList minYear:"+minYearStr);
 		System.out.println("MusicList maxYear:"+maxYearStr);
@@ -73,8 +77,16 @@ public class MusicList extends HttpServlet {
 
 		request.setAttribute("musicList", musicList);
 
-		// 通常表示
-		request.getRequestDispatcher("/jsp/musicList.jsp")
-		.forward(request, response);
+		
+		// AJAXかどうかで分岐
+		if ("ajax".equals(mode)) {
+		    // 一覧部分だけ返す
+		    request.getRequestDispatcher("/jsp/musicListPart.jsp")
+		        .forward(request, response);
+		    return;
+		}
+
+		
+
 	}
 }
