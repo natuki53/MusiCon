@@ -18,6 +18,9 @@ if (userName == null) {
 <%-- cssの連携 --%>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/showRanking.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
 </head>
 <body>
 	<canvas id="canvas"></canvas>
@@ -106,9 +109,29 @@ if (userName == null) {
 				}
 			%>
 
-			<li><div class="rankcount"><%=showing_rank + "位"%>
+			<li>
+			
+			<%
+			if (showing_rank == 1){
+				%><div class="rank-first"><%="1位"%>
+				/ いいね：<%=m.getLikes()%>回
+			</div><%
+			}else if(showing_rank == 2){
+				%><div class="rank-second"><%="2位"%>
 					/ いいね：<%=m.getLikes()%>回
-				</div> <a
+				</div><%
+			}else if(showing_rank == 3){
+				%><div class="rank-third"><%="3位"%>
+					/ いいね：<%=m.getLikes()%>回
+				</div><%
+			}else{
+				%><div class="rankcount"><%=showing_rank + "位"%>
+					/ いいね：<%=m.getLikes()%>回
+				</div><%
+			}
+			%> 
+				
+				<a
 				<%// URL が取得できない場合でもページが落ちないようにフォールバックする
 String playLink;
 if (m.getUrl() != null && !m.getUrl().isEmpty()) {

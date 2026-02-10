@@ -104,10 +104,12 @@ if (userName == null) {
 		<a
 			href="${pageContext.request.contextPath}/PlayMusic?url=<%=java.net.URLEncoder.encode(m.getUrl(), "UTF-8")%>"
 			class="music-area btn-flat">
-			<div class="title">
-				タイトル：<%=m.getTitle()%></div>
+			<div class="marquee">
+				<div class="title">
+					<%=m.getTitle()%></div>
+			</div>
 			<div class="artist">
-				アーティスト：<%=m.getArtist()%></div>
+				<%=m.getArtist()%></div>
 			<div class="like">
 				いいね：<%=m.getLikes()%></div>
 		</a>
@@ -232,5 +234,47 @@ if (userName == null) {
 			}
 
 			window.requestAnimationFrame(changeCanvas);</script>
+			
+			<!-- ▼ 曲タイトルスクロール -->
+	<script>
+	window.addEventListener('DOMContentLoaded', () => {
+	    const marquees = document.querySelectorAll('.marquee');
+
+	    // 枠内判定
+	    marquees.forEach(marquee => {
+	        const title = marquee.querySelector('.title');
+
+	        requestAnimationFrame(() => {
+	            const textWidth = title.scrollWidth;
+	            const boxWidth  = marquee.clientWidth;
+
+	            if(textWidth > boxWidth){
+	                title.dataset.marquee = "true"; // スクロール対象
+	                title.style.textAlign = 'left';
+	            } else {
+	                title.dataset.marquee = "false"; // 枠内に収まる
+	                title.style.textAlign = 'center';
+	            }
+	        });
+	    });
+
+	    // ON/OFF切替（5秒ごと）
+	    let active = false;
+	    setInterval(() => {
+	        active = !active;
+	        marquees.forEach(marquee => {
+	            const title = marquee.querySelector('.title');
+	            if(title.dataset.marquee === "true"){
+	                if(active){
+	                    title.classList.add('is-marquee');
+	                } else {
+	                    title.classList.remove('is-marquee');
+	                    title.style.transform = 'translateX(0)';
+	                }
+	            }
+	        });
+	    }, 5000);
+	});
+	</script>
 </body>
 </html>
