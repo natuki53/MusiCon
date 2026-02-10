@@ -93,22 +93,22 @@ if (userName == null) {
 		<li><a
 			href="${pageContext.request.contextPath}/PlayMusic?playlistMode=true&pos=<%=item.getPos()%>"
 			class="music-area btn-flat">
-			<div class="marquee">
-				<div class="title">
-					<%=m.getTitle()%></div>
-					</div>
+				<div class="marquee">
+					<div class="title">
+						<%=m.getTitle()%></div>
+				</div>
 				<div class="artist">
 					<%=m.getArtist()%></div>
 				<div class="id">
 					順番：<%=item.getPos() + 1%></div>
-		</a>
-			<form action="${pageContext.request.contextPath}/MyPlaylist"
-				method="post" style="margin-top: 10px;">
-				<input type="hidden" name="id" value="<%=m.getId()%>">
-				<button type="submit" class="btn-flat"
-					style="background: #f7d358; border: none; cursor: pointer;">
-					★ プレイリストから外す</button>
-			</form></li>
+				<form action="${pageContext.request.contextPath}/MyPlaylist"
+					method="post" class="playlist-btn">
+					<input type="hidden" name="id" value="<%=m.getId()%>">
+					<button type="submit" class="left-btn"
+						style="background: #f7d358; border: none; cursor: pointer;">
+						★ プレイリストから外す</button>
+				</form>
+		</a></li>
 		<hr>
 		<%
 		}

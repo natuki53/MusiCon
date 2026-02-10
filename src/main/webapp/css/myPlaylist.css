@@ -141,6 +141,9 @@ body {
 	    }
 	}
 	
+.playlist-btn{
+	margin-top: -15px;
+}
 .music-area .artist,
 .music-area .time {
 	z-index: 1;
