@@ -7,8 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>曲の再生</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/playMusic.css">
-<script defer src="${pageContext.request.contextPath}/js/playMusic.js"></script>
+<script defer src="${pageContext.request.contextPath}/js/playMusic.js?v=2"></script>
 </head>
 <body>
 
@@ -109,8 +110,27 @@ document.querySelector(".overlay").addEventListener("click", () => {
 });
 </script>
 
-<% String defaultJacketUrl = request.getContextPath() + "/png/MusiConLogo.png"; %>
-<div id="player-container">
+<%
+String defaultJacketUrl = request.getContextPath() + "/png/MusiConLogo.png";
+/* ミニプレイヤー用の戻り先 URL を組み立て */
+String returnUrl;
+if (isPlaylistMode) {
+    returnUrl = request.getContextPath() + "/PlayMusic?playlistMode=true&pos=" + playlistPos;
+} else if (music.getUrl() != null && !music.getUrl().isEmpty()) {
+    returnUrl = request.getContextPath() + "/PlayMusic?url=" + java.net.URLEncoder.encode(music.getUrl(), "UTF-8");
+} else {
+    returnUrl = request.getContextPath() + "/PlayMusic?id=" + music.getId();
+}
+String titleEsc = music.getTitle().replace("&","&amp;").replace("\"","&quot;").replace("<","&lt;").replace(">","&gt;");
+String artistEsc = music.getArtist().replace("&","&amp;").replace("\"","&quot;").replace("<","&lt;").replace(">","&gt;");
+String jacketEsc = ((jacketUrl != null && !jacketUrl.isEmpty()) ? jacketUrl : defaultJacketUrl).replace("&","&amp;").replace("\"","&quot;");
+String returnUrlEsc = returnUrl.replace("&","&amp;").replace("\"","&quot;");
+%>
+<div id="player-container"
+     data-title="<%=titleEsc%>"
+     data-artist="<%=artistEsc%>"
+     data-jacket="<%=jacketEsc%>"
+     data-return-url="<%=returnUrlEsc%>">
     <div class="album-art">
         <img src="<%= (jacketUrl != null && !jacketUrl.isEmpty()) ? jacketUrl : defaultJacketUrl %>" alt="ジャケット" class="album-art-img"
              onerror="this.onerror=null; this.src='<%= defaultJacketUrl %>';">
